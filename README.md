@@ -1,5 +1,3 @@
-# Dynamique de la construction de la perception auditive consciente : Aspects
-électrophysiologiques et corrélats informationnels neuronaux
-macroscopiques
+# Dynamique de la construction de la perception auditive consciente : Aspects électrophysiologiques et corrélats informationnels neuronaux macroscopiques
 
 Thèse de doctorat / PhD Thesis
