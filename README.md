@@ -2,4 +2,4 @@
 
 Thèse de doctorat / PhD Thesis
 
-All files allowing to generate the Thesis.
+LateX files used to generate the thesis manuscript
