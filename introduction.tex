@@ -1,0 +1,259 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Introduction}
+\label{introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\noindent \hrulefill \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\label{contexte} Contexte opérationnel}
+\addcontentsline{toc}{section}{Contexte opérationnel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+En 2017, le Réseau de Sécurité de l'Aviation\footnote{Aviation Safety Network. L'ASN est une initiative privée et indépendante fondée en 1996 par Harro Ranter. Disponible en ligne depuis janvier 1996, l'ASN couvre les accidents et les questions de sécurité concernant les avions de ligne, les avions de transport militaire et les avions d'affaires. La base de données de sécurité de l'ASN contient des descriptions détaillées de plus de 20 300 incidents, détournements d'avions et accidents. Leur déclaration de mission est : «Fournir à toute personne ayant un intérêt (professionnel) pour l'aviation des informations actualisées, complètes et fiables faisant autorité sur les accidents d'avions de ligne et les questions de sécurité».} a enregistré plus de 36 millions de vols d'avions dans le monde, soit l'équivalent de plus d'un vol chaque seconde, réalisés par quelques 27 000 avions de ligne. 
+Actuellement, on dénombre plus de 15 000 aéroports dans le monde et environ 127 passagers prennent l'avion par aéroport chaque seconde selon le Groupe d'Action du Transport Aérien\footnote{Air Transport Action Group. L'ATAG est une association à but non lucratif qui représente tous les secteurs du transport aérien. L'ATAG fournit une plateforme financée par ses membres permettant au secteur de l'aviation commerciale de travailler ensemble sur les questions de durabilité à long terme. L'ATAG compte quelque 40 membres dans le monde tels que des aéroports, des compagnies aériennes, des fabricants de pièces, des prestataires de services de navigation aérienne, etc.}. 
+En France, ce sont plus de 5 personnes qui s'envolent d'un aéroport français toutes les secondes, soit l'équivalent de près de 461 000 passagers chaque jour et 163 millions par an. 
+L’Association Internationale du Transport Aérien\footnote{International Air Transport Association. L'IATA est la principale association professionnelle des compagnies aériennes du monde entier. Elle représente quelques 290 compagnies aériennes, soit 83\% du trafic aérien total. Elle soutient de nombreux domaines de l'activité aéronautique et aide à formuler la politique de l'industrie sur les questions essentielles de l'aviation.} prévoit d’ici 2037 que le nombre de passagers à l'international pourrait doubler pour atteindre environ 8 milliards de voyageurs aériens. 
+Elle prévoit également plus de 37 000 nouvelles livraisons d’avions neufs sur cette période, amenant une estimation de la flotte mondiale à plus de 50 000 avions en service.
+
+Malgré ce grand nombre de vols, le transport aérien est actuellement considéré comme le mode de transport le plus sûr avec en moyenne un accident pour 7 millions de vols. 
+Grâce aux progrès technologiques, à un savoir-faire aiguisé et à une réglementation de certification exigeante, les systèmes critiques en aéronautique sont dits «ultra-sûrs» \citep{amalberti1998dysfonctionnements}. 
+Bien que les systèmes critiques embarqués ne connaissent que très rarement de défaillances qui remettent en cause la sécurité, la question de l’automatisation a été soulevée très tôt en aéronautique. 
+Ainsi, depuis l'avènement des commandes électriques sur les avions de ligne vers la fin des années 1980, la place de l'humain a fondamentalement changé dans les cockpits. 
+Les pilotes ont rapidement reconnu l’instabilité de leur appareil et leur difficulté à gérer l’ensemble des paramètres de vol. 
+Le développement d’aides au pilotage est donc devenu une nécessité avec l'évolution technologique et l'utilisation croissante de l'automatisation. 
+Le pilote n'agit plus désormais stricto sensu sur les commandes de vol et a été mis en retrait des fonctions de contrôle manuel des systèmes. 
+Parmi elles, on note la planification des procédures, la prise de décision, la sélection des actions à venir et l’implémentation de stratégies au long cours \citep{moray1986monitoring, bainbridge1983ironies}. 
+
+De fait, cet éloignement du pilote a eu des conséquences sur les performances et cette nouvelle attribution des tâches a forcé les pilotes à adapter leurs routines et leurs compétences \citep{somon2018correlats}. 
+Les fonctions de contrôle manuel se sont transformées en de la supervision/compréhension des actions du système, de la vérification d’états et une reprise en main uniquement lors d'urgences \citep{moray1986monitoring, sheridan1978human}. 
+Le pilote est ainsi devenu un véritable superviseur qui gère un système de plus en plus automatisé et complexe, dont il assume la responsabilité en liaison avec les autres acteurs de l'espace aérien. 
+La sécurité inhérente à la maîtrise de tels systèmes complexes dépend en premier lieu de la capacité du pilote à réagir rapidement et correctement à la situation. 
+Les opérations se font bien souvent dans un environnement dynamique incertain, où les décisions doivent être prises de manière rapide, amenant le pilote à commettre des erreurs. 
+Malgré ce risque, l'impact positif des différentes actions de l’opérateur humain couplé à la complexité des stratégies opérationnelles rendent impossible une automatisation complète de ces systèmes. 
+La conception des systèmes interactifs est désormais centrée sur l'opérateur et les différents usages, et se nourrit du retour d'expérience. 
+
+Les innovations technologiques ayant conduit à l’amélioration de la sécurité aérienne rendent de plus en plus évidente la présence d’une responsabilité humaine dans les accidents aériens. 
+En aviation civile ou militaire, les analyses révèlent que les responsabilités sont attribuables à l’opérateur humain dans 70 à 80 \% des cas d’accidents \citep{o1994cognitive, shappell2003reshaping}. 
+Ces statistiques sont à l'origine d'un nombre important d’études en facteurs humains depuis le début des années 1980. 
+Une enquête a rapporté pas moins de six accidents aéronautiques majeurs liés à une incapacité à surveiller correctement le système automatisé et/ou les paramètres de vol \citep{billings1991human}. 
+Les études scientifiques ont permis de nombreux progrès dans la compréhension des mécanismes à l’origine de l’erreur humaine. 
+Les différentes approches proposées pour expliquer les causes de tels accidents mettent en avant l’importance des états cognitifs, perceptifs, attentionnels et de vigilance des opérateurs dans le risque d’erreur humaine. 
+
+En dépit de récents résultats, les risques d’erreurs humaines, en particulier ceux liés à des informations présentées mais insuffisamment intégrées, continuent de remettre en cause la sécurité aérienne. 
+Le pilotage d’un avion nécessite des capacités de réflexion et de raisonnement «instinctives» et sollicite massivement les fonctions d’intégration de haut niveau pour traiter rationnellement le flux informationnel. 
+La dimension cognitive de l’opérateur est omniprésente dans le domaine des systèmes aéronautiques et doit être prise en compte dans le renforcement de la performance et de la sécurité des systèmes. 
+Ainsi, l'un des objectifs principaux de la recherche en aéronautique et en facteurs humains est d'améliorer la performance des systèmes et d'augmenter la sécurité en veillant à ce que l'humain puisse jouer son rôle exactement là où il est attendu. 
+Un enjeu essentiel dans ce type de recherches est la compréhension des processus cognitifs mis en œuvre par l’opérateur en situation d'incertitude.
+
+En aéronautique, l'environnement du pilote oriente les opérations, procédures et prises de décisions à engager en situation opérationnelle. 
+L'une des sources pouvant conduire à d'importants risques pour la sécurité aérienne est la présence d'incertitude dans cet environnement. 
+La façon dont le pilote perçoit les composantes de cet environnement, dynamique, bruité et incertain est essentielle pour lui permettre une analyse de situation décisionnelle critique. 
+Une source d'incertitude non négligeable s'est révélée être la multiplicité des informations sonores dans le cockpit. 
+Malgré des techniques d'isolation avancées utilisées pour diminuer la quantité de nuisance sonore dans le cockpit, ce dernier reste un environnement acoustique bruité présentant un niveau d'incertitude élevé \citep{rotger1997confort}. 
+Quatre sources sonores principales sont perceptibles à l’intérieur d’un avion à réaction : i) les fluctuations de pression dans la couche limite ; ii) les moteurs, qui produisent du bruit de jet et du bruit de soufflante transmis dans la cabine par voie aérienne ; iii) les vibrations transmises par voie structurale et enfin iv) les équipements de la cabine et du poste de pilotage (conditionnement d’air, système hydraulique, refroidissement des instruments d’avionique, évacuations sanitaires, etc...). 
+À ces sources d'incertitude sonore multiples dans le cockpit viennent s'ajouter celles liées aux conditions météorologiques, aux différentes alertes auditives ou encore aux paroles des autres membres de l'équipage. 
+
+Les alertes auditives sont des indices acoustiques importants pour les tâches complexes de résolution de problèmes et de prise de décision effectuées par le pilote. 
+En situation opérationnelle, il arrive que les systèmes automatisés aient à prévenir le pilote de la survenue d'un problème imminent au sein de l'avion. 
+Par exemple, l’implémentation du train d’atterrissage rétractable a nécessité la mise en place d’une alarme pour avertir le pilote en cas d’oubli de sortie du train. 
+Un rôle principal des alertes auditives du poste de pilotage est d'attirer l'attention du pilote sur un événement particulier du système. 
+La manière dont un pilote est alerté d'un état anormal du système vient influencer l'exécution des tâches ultérieures après la détection de l'alerte \citep{wickens2000signal}. 
+Lors de la présentation d'une alerte, le pilote doit chercher à la reconnaître et à analyser sa signification par rapport aux informations présentées dans le poste de pilotage. 
+De cette manière, le pilote pourra viser à résoudre toute condition d'exploitation anormale ou dangereuse \citep{peryer2005auditory, hawkins2017human, pritchett2017reviewing}. 
+Les alertes auditives sont connues pour présenter divers avantages dans les situations d'urgence par rapport aux stimuli visuels \citep{dehais2012missing, scannella2013effects}. 
+En effet, elles fournissent des informations aux pilotes sans nécessiter de mouvements de la tête ou de l'œil \citep{edworthy1991improving}. 
+En outre, elles sont associées à des temps de réaction plus courts que les alertes visuelles \citep{stephan2000auditory, wheale1981speed}. 
+
+Une analyse des rapports de sécurité aérienne a révélé qu'un nombre conséquent d'accidents est dû à un manque de réaction aux alarmes auditives \citep{bliss2003investigation}. 
+L'absence de réaction lors de la présentation de telles alertes est, en conséquence, un risque majeur pour la sécurité aérienne \citep{bliss2003investigation, dehais2010perseveration, dehais2012missing, scannella2013effects}.
+Plusieurs explications ont été proposées pour expliquer l'absence de réaction aux alarmes auditives. 
+La première impliquerait principalement le manque de fiabilité de ces systèmes d'alerte, susceptibles de provoquer un biais cognitif \citep{breznitz1984psychology, wickens2009false}. 
+Cela conduirait les pilotes à se méfier des alarmes \citep{shapiro1994nbc, song2001describing, sorkin1988people} notamment en condition de forte charge de travail \citep{bliss2000behavioural, dehais2012missing}. 
+Une deuxième explication porterait plus spécifiquement sur la nature agressive, distrayante et dérangeante des alarmes auditives \citep{doll1984auditory, edworthy1991improving}. 
+Cette nature serait à même de considérablement augmenter le niveau de stress du pilote lors des événements d'alerte \citep{peryer2005auditory, dehais2012missing}. 
+Dans de telles circonstances, les pilotes considèrent les alertes auditives comme une source d'irritation \citep{patterson1982guidelines}. 
+Si une alerte auditive agit comme un facteur de stress ou de confusion chez le pilote, ce dernier cherchera dans l'immédiat un moyen de faire taire le bruit plutôt que d'analyser sa signification et de résoudre les conditions de fonctionnement dangereuses. 
+
+Ces éléments ne sont cependant pas suffisants pour expliquer entièrement la perception erronée ou simplement la cécité perceptive du pilote vis-à-vis des alertes auditives critiques. 
+Du moins, c'est ce que suggèrent les rapports d'analyses d'accidents \citep{bea1993accident, bliss2003investigation} et les données observées en simulateurs de vol \citep{dehais2012missing, dehais2014failure, dehais2017eeg}. 
+Une recherche complémentaire a ainsi considéré le rôle des processus perceptifs et attentionnels engagés lors de la présentation d'alertes auditives. 
+Un pilote en situation opérationnelle est susceptible d'éprouver de la difficulté à entendre, percevoir, ou intégrer à un niveau conscient une alerte auditive qui lui est présentée. 
+Le fait qu'une information puisse apparaître hors de l'état attentionnel du sujet ou «cécité attentionnelle», a été mis en avant pour expliquer cette incapacité du pilote à prendre en compte les alertes auditives \citep{dehais2014failure, dehais2017eeg, dehais2019inattentional, scannella2013effects}. 
+Comme le vol est une activité multimodale sollicitant massivement le traitement visuel, ce phénomène est plus susceptible de se produire dans le cockpit, entraînant une négligence de l'alarme auditive \citep{scannella2018auditory}. 
+L'effet de «canalisation attentionnelle» est très présent lors d'évènement relativement dangereux tel que la remise de gaz, puisqu'il demande une extrême concentration au pilote : le pilote est tellement focalisé dans son action qu'il ne perçoit quasiment plus le reste. 
+De cette manière, certains sons attendus ou non peuvent dès lors ne pas atteindre la conscience \citep{dehais2017eeg, molloy2015inattentional, macdonald2011visual, raveh2015load}. 
+Ainsi, l'environnement du pilote contribue à la capacité ou l'incapacité de ce dernier à pouvoir détecter et percevoir certains signaux critiques comme les alarmes auditives. 
+
+Dans le système auditif humain, la perception d'un signal sonore est basée sur un aspect de l’analyse de la scène auditive appelé ségrégation des flux auditifs \citep{bregman1994auditory}.
+Elle consiste à organiser les entrées acoustiques provenant de multiples sources sonores en objets auditifs cohérents comme dans la situation classique de «Cocktail Party» \citep{cherry1953some, mcdermott2009cocktail}.
+Cette situation représente celle où un système (\textit{i.e.}, le pilote) doit ségréger une source sonore cible (\textit{i.e.}, l'alarme) à partir d’une mixture acoustique (\textit{i.e.}, l'environnement sonore incluant l'alarme). 
+La capacité à percevoir un signal auditif est donc basée sur une prise de conscience subjective de l'individu d'un objet auditif de l'environnement. 
+
+La perception auditive consciente dépend fondamentalement d'une interaction fine entre des processus ascendants de saillance des caractéristiques de l'objet et des processus descendants de «canalisation» attentionnelle d'ordre plus centraux \citep{elhilali2009interaction}. 
+Certains sons saillants mais inattendus peuvent passer inaperçus dans des situations demandant une attention particulière \citep{cherry1953some, koreimann2014inattentional, spence2003speech, vachon2011exploiting, wood1995cocktail}. 
+Les processus attentionnels permettent de mieux comprendre la perception consciente mais ne peuvent, à eux-seuls, en rendre compte puisque les propriétés de l'objet auditif peuvent faciliter ou non la construction d'un percept conscient. 
+Le focus attentionnel et l'émergence des propriétés de l'objet auditif à la conscience d'un individu rendent sa perception dépendante de l'activité intégrée de toute une structure hiérarchique de traitement de l'information auditive. 
+De fait, la cécité attentionnelle seule, peut ne pas être à même de rendre pleinement compte de l'incapacité du pilote à percevoir une alerte auditive dans le cockpit.
+
+Depuis plusieurs décennies maintenant, l'étude du phénomène de la conscience a émergé comme un domaine de recherche légitime très attractif et actif. 
+De plus en plus d'études se sont intérêssées aux mécanismes sous-tendant la conscience \citep{cohen2010brain, dehaene2011experimental, khamassi2021neurosciences}. 
+De nombreuses expériences ont été réalisées pour comparer le cerveau et les comportements des sujets en état d'éveil normal et en cas de perte de conscience physiologique (par exemple, veille versus sommeil), pharmacologique (par exemple, l'anesthésie) et pathologique (par exemple, l'épilepsie). 
+La conscience, en tant que notion protéiforme, a donné lieu à des définitions et des conceptions différentes \citep{dehaene2011experimental, kleiner2020mathematical, sattin2021theoretical, taylor2011review}. 
+Les modèles de la conscience se sont dès lors ancrés sur des théories issues des neurosciences et sur des outils de neuroimagerie pour permettre l'étude du substrat neuronal et de ses dynamiques en lien avec les états et les contenus de conscience \citep{aru2012distilling, dehaene2011experimental, khamassi2021neurosciences, kleiner2020mathematical, sattin2021theoretical, tagliazucchi2013sleep, taylor2011review, yaron2021consciousness}. 
+Bien que les études sur la conscience ait grandement proliféré ces dernières décennies, l'impressionnante masse de littérature accumulée doit encore converger vers une théorie largement acceptée. 
+En ce sens, la détermination des états et des contenus de conscience s'est avérée être un problème pratique et théorique difficile. 
+
+Aujourd'hui, la conscience peut être étudiée sur la base de ces différents états ainsi qu'au travers des contenus neuronaux associés aux processus cérébraux. 
+L'immense majorité des travaux précédents portant sur la conscience s'est montrée limitée à une approche statique. 
+La dynamique des processus d'accès amenant à une conscience de l'information n'ayant été que très peu prise en compte précédemment. 
+Les mécanismes et processus associés à la conscience n'ont été étudiés principalement qu'en fonction de l'information présente à un instant donné. 
+Cependant, ces processus et mécanismes conscients présentent des propriétés dynamiques fondamentales. 
+Actuellement, il n'existe pas de consensus scientifique sur les mécanismes neuronaux propres à la prise de conscience et à sa construction dans le temps. 
+Un défi majeur consiste dès lors à être capable de diagnostiquer un accès conscient sur la base de l'activité cérébrale d'un individu en étudiant la contruction de cet accès sur le temps \citep{khamassi2021neurosciences}. 
+Cette perspective est particulièrement critique dans le domaine médical, où certains patients sont dans des états de conscience modifiée tels que les coma, anesthésie et autres, et leur diagnostic est fondamental. 
+Cependant, comme nous venons de le présenter, cet aspect est tout aussi critique dans le domaine aéronautique où le défaut de la prise de conscience d'une alarme sonore peut engendrer une faille critique majeure dans la sécurité \citep{bea1993accident, bliss2003investigation, dehais2010perseveration, dehais2014failure, dehais2017eeg, dehais2019inattentional, scannella2013effects, scannella2018auditory}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Problématiques opérationnelles }
+\addcontentsline{toc}{section}{Problématiques opérationnelles}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans le milieu aéronautique, les évaluations en laboratoire ou en situation écologique permettent de caractériser certains types de comportements, d'analyser les interactions du pilote avec les systèmes et de détecter les difficultés rencontrées. 
+Aujourd'hui, il existe un réel paradoxe auquel les concepteurs d'interfaces sont confrontés, soulevant une problématique actuelle \citep{dehais2010perseveration, dehais2014failure, dehais2017eeg, dehais2019inattentional, scannella2013effects, scannella2018auditory}, qui est de savoir : 
+\begin{quote}
+\textit{\textbf{Comment alerter un humain de son absence de réaction vis-à-vis d'une alerte présentée ?}}
+\end{quote}
+
+Pour apporter des réponses à cette problématique, la neuroergonomie\footnote{La neuroergonomie est une spécialité récente apparue dans le domaine des neurosciences et consiste en une branche de ce vaste domaine qui étudie les réactions du cerveau dans un milieu. Plus précisément, la neuroergonomie consiste en l'étude des structures et fonctions du cerveau durant l'exécution d'une tâche, dans le but d'améliorer les performances et de diminuer le risque d'erreur.} encourage la multidisciplinarité et la mise en œuvre de dispositifs d'imagerie cérébrale pour comprendre le fonctionnement cognitif dans des situations réelles complexes \citep{parasuraman2008neuroergonomics}. 
+Elle ouvre ainsi des perspectives prometteuses pour répondre à de telles problématiques issues de la recherche opérationnelle. 
+Dans les années à venir, la conception d'interfaces cerveau-machine (ICM) issues de la recherche opérationnelle prendra très vraisemblablement une part non-négligeable dans les systèmes à hauts risques.
+D'une part, les concepteurs devront s'assurer que les alertes présentées aux pilotes possèdent des caractéristiques appropriées permettant une compréhension rapide et précise. 
+D'autre part, les feedbacks renvoyés aux pilotes par les différents systèmes devront être basés sur des caractéristiques pertinentes, robustes et fiables dans leurs capacités à indiquer les possibles défauts de perception du pilote. 
+
+Disposer de méthodes adéquates permettant une caractérisation pertinente de l'accès conscient sur la base de la dynamique de l'activité cérébrale recueillie au moyen d'outils de neuroimagerie fonctionnelle est fondamental. 
+Le développement de technologies neuroadaptatives à partir d'ICM pour les neurocockpits de demain nécessite de s'intéresser profondément à de tel indicateurs dans leur capacité à caractériser l'accès conscient.
+Un accès à l'activité cérébrale fonctionnelle a été permis avec l'émergence et le développement de nouvelles technologies d’imagerie cérébrale \citep{cohen2010brain}. 
+Parmi ces technologies, l’électroencéphalographie (EEG) enregistre directement et en temps réel l’activité électrique générée par le fonctionnement neuronal avec une excellente résolution temporelle, de l’ordre de la milliseconde. 
+En outre, l'EEG est un outil de neuroimagerie qu'il est possible d'utiliser dans un cockpit. 
+À ce titre, l'utilisation en temps réel d'indicateurs tels que des neuromarqueurs recueillis au moyen de tels outils de neuroimagerie fonctionnelle portatifs comme l'EEG est une perspective très intéressante. 
+En effet, avertir directement l'opérateur qu'il n'a pas pris en compte un signal cible spécifique en provenance des systèmes de pilotage au moyen de neurofeedbacks est une solution pratique réelle aux problèmes de perception des alarmes. 
+La base empirique d'une telle situation opérationnelle où le pilote présente l'incapacité à percevoir une alerte auditive amène à soulever une seconde problématique, à savoir :
+\begin{quote}
+\textit{\textbf{Comment la dynamique du signal EEG macroscopique peut-elle caractériser l`accès conscient d'un signal auditif d'intérêt chez l'humain ? }}
+\end{quote}
+
+La situation opérationnelle pose le problème de l'accès à la conscience du percept auditif de l'alarme et nous avons vu qu'en cas de non-accès, c'est un élément clé de la sécurité du vol. 
+Permettre une meilleure caractérisation de cette dynamique d'accès à la conscience d'un percept auditif chez l'humain est le support théorique de ce travail de thèse.
+Malgré de nombreuses études sur les indicateurs neuronaux de la perception auditive consciente, un constat est que très peu d'études ont cherché à caractériser plus finement la dynamique de la construction du percept auditif. 
+La caractérisation de la perception auditive consciente est à la fois intéressante tant d'un point de vue aéronautique (sécurité des opérations aériennes) que d'un point de vue neuroscientifique (corrélats neuronaux de la perception). 
+
+Aujourd'hui, il est possible de caractériser plus en détail la perception consciente au moyen d'indicateurs et de caractéristiques directement extraits des signaux neurophysiologiques disponibles à l'échelle cérébrale.
+Nos travaux ont été motivés par l'émergence croissante de travaux tels que ceux réalisés dans le cadre d'analyses comparatives de signatures du signal électrophysiologique issues de données neurales lors d'expériences visant à qualifier et à quantifier les états de conscience \citep{curley2018characterization, engemann2018robust, engemann2020combining, king2014characterizingthesis, liang2015eeg, sitt2014large}. 
+Au-delà des états de conscience, les caractéristiques extraites de signaux neurophysiologiques ont été efficaces à caractériser des états perceptifs d'individus \citep{curtu2019neural, fishman2021learning, higgins2020neural, roy2016efficient, roy2020can}. 
+Ces différents marqueurs électrophysiologiques suggèrent que la perception consciente repose sur un réseau neuronal distribué qui prend en charge la sélection, le maintien et le partage d'informations entre plusieurs modules corticaux \citep{king2014characterizingthesis}. 
+Notamment, ces indicateurs ont été rendus disponibles à travers l'utilisation d'outils et de champs théoriques issus des neurosciences et à travers l'utilisation de paradigmes de recherche spécifiques en psychologie expérimentale. 
+Cette disponibilité et leur utilisation pratique soulèvent ainsi une troisième problématique, qui consiste à savoir :
+\begin{quote}
+\textit{\textbf{Quel(s) biomarqueur(s) associé(s) au signal EEG serai(en)t en mesure d'être utilisé(s) dans le cadre d'une exploitation pratique du diagnostic de la perception auditive consciente chez l'humain ?}}
+\end{quote}
+
+Les progrés des ICM pourraient ainsi permettre d'alerter du non-accès à la conscience sur la base de mesures permettant de discriminer l'accès à la conscience et le non-accès à la conscience. 
+En ce sens, l'EEG, déjà actuellement utilisé comme outil de neuroimagerie fonctionnelle portatif, permet de mieux comprendre les dynamiques temporelles associées aux corrélats neuronaux de la perception auditive consciente. 
+L'utilisation d'indicateurs neurophysiologiques pour le monitoring et la surveillance de l'individu en situation opérationnelle de tâches spécifiques n'en étant encore qu'à ses débuts, cette thèse a cherché à en étudier les propriétés dynamiques de l'activité EEG dans la construction du percept auditif liée à la perception consciente chez le sujet humain en se basant sur l'utilisation de tels indicateurs.
+La problématique opérationnelle issue du milieu aéronautique de perception des alarmes sonores par le pilote permet de soulever la problématique scientifique de la caractérisation de la perception auditive consciente et de son accès au moyen d'indicateurs extraits sur la base d'enregistrements neurophysiologiques chez le sujet sain. 
+Plus spécifiquement, il semblerait que peu d'études se soient intéressées à l'information que contiennent et transmettent les populations neuronales lors de la construction d'un percept auditif. 
+Caractériser la dynamique de la construction d'un percept auditif et en déterminer une quantification de l'information associée à une telle dynamique transitoire à l'échelle cérébrale est dès lors primordial. 
+Fondé sur de tels éléments, ce travail de thèse étudie les caractéristiques neuronales liées aux processus et mécanismes de la perception auditive consciente à travers l'étude du contenu et des dynamiques du signal EEG, pour tenter de répondre à la problématique fondamentale plus globale de savoir :  
+\begin{quote}
+\textit{\textbf{Comment la perception consciente d'un signal auditif peut-elle être liée à des variations de la dynamique des traitements informationnels à l'échelle cérébrale macroscopique ?}}
+\end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Objectifs expérimentaux}
+\addcontentsline{toc}{section}{Objectifs expérimentaux}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le but de notre travail est de caractériser la dynamique cérébrale associée à la perception auditive consciente afin de pouvoir contribuer à l'élucidation des problématiques opérationnelles décrites ci-dessus. 
+On cherche à donner des éléments de réponse à une problématique de caractérisation de la dynamique de l'accès conscient d'un stimulus auditif pertinent au milieu d'un environnement complexe chez le sujet adulte humain sain. 
+Une première partie de ce travail a donc été consacrée à l'implémentation d'un protocole expérimental psychophysique permettant l'étude de la dynamique de l'accès conscient d'un stimulus auditif. 
+Le problème de la détection de l'alarme sonore dans un cockpit par le pilote s'apparente à un problème de ségrégation des flux auditifs tel qu'il existe dans le cas des situations de cocktail party. 
+En présence d'une mixture sonore de flux auditifs émanant de multiples sources acoustiques, le système auditif humain doit procéder à une ségrégation des différents flux pour aboutir à une organisation perceptive cohérente. 
+À l'opposé d'un tel phénomène de ségrégation auditive, il existe des phénomènes de masquage auditif qui sont usuellement compris comme relevant d'une augmentation du seuil de perception d'un stimulus auditif. 
+
+Un paradigme de masquage auditif très étudié et fondamental pour la compréhension de la perception auditive consciente est le paradigme de masquage informationnel (MI). 
+Ce paradigme consiste à présenter au sujet une cible sonore, généralement une tonalité qui se répète dans le temps, dans un signal sonore «masqueur» ou «masquant». 
+La tâche du participant est alors de détecter la cible. 
+Ainsi, le masquage auditif peut survenir lorsqu'un objet auditif cible est masqué par d'autres objets de l'environnement auditif. 
+Ce phénomène peut être compris comme le résultat de l'absence de ségrégation du flux issu de l'objet d'intérêt par les voies de traitement de l'information auditive. 
+Le masquage auditif présente un intérêt particulier en neurosciences auditives puisqu'il permet de comparer les états perceptifs d'objets «masqués» vis-à-vis d'objets «non-masqués». 
+En fournissant un tel contraste entre objets perçus et non-perçus, il permet une étude comparative des corrélats neuronaux de la perception auditive consciente. 
+
+Le MI a fait l'objet de nombreuses études en psychoacoustique et se base sur un ensemble de paramètres qui construisent le stimulus. 
+En utilisant ce paradigme, différents niveaux de complexité de stimuli peuvent être générés à travers la manipulation de combinaisons de paramètres. 
+La complexité des stimuli peut ainsi être manipulée pour introduire différents niveaux de difficulté pour quantifier l'impact de chaque paramètre sur la perception de la cible. 
+Il est alors possible d'obtenir des informations sur la dynamique de la perception en lien avec la construction d'un percept auditif sur la base des caractéristiques structurelles du stimulus. 
+De cette manière, afin d'apporter des réponses aux problématiques opérationnelles, il a été nécessaire de mettre en place un protocole expérimental permettant l'évaluation des paramètres construisant le percept auditif. 
+La situation opérationnelle a donc été modélisée expérimentalement par un protocole de psychoacoustique : le paradigme de masquage informationnel. 
+
+Dans ce cas, peu de littérature a fait l'étude systématique de l'effet des principaux paramètres de la situation de MI afin de pouvoir aborder méthodiquement le décours temporel et donc la dynamique de l'accès à la conscience d'un stimulus. 
+Notre objectif expérimental a été une exploration la plus large possible des différentes paramètres afin de déterminer une situation adéquate pour l'étude des corrélats neuronaux de la perception auditive consciente. 
+Une première partie de ce travail a été de créer un paradigme de MI et de manipuler le contenu des stimuli auditifs. 
+Cette manipulation du contenu des stimuli nous a permis d'étudier leur impact sur le décours temporel de la perception (étude I). 
+Dans cette étude psychoacoustique, nous avons fait varier les paramètres influençant la dynamique de la perception consciente afin d'obtenir leurs effets sur la vitesse et la «qualité» de la construction du percept auditif.
+Cette étude était nécessaire afin d'obtenir des conditions expérimentales permettant un décours temporel compatible avec les métriques caractérisant les corrélats neuronaux de la mise en place du percept.
+L'objectif était de trouver une ou plusieurs combinaisons de paramètres propices à une émergence de la détection du signal plusieurs secondes après le début de l'essai associée à des taux de détection suffisamment élevés. 
+De plus, cette première étude allait nous permettre de tenter de comprendre sur quels indices nous extrayons et analysons les flux auditifs et ainsi de mieux en comprendre les mécanismes. 
+
+Une deuxième partie de ce travail de thèse a été la caractérisation de la dynamique neuronale associée au traitement de l'information en lien avec la construction du percept auditif. 
+Pour caractériser la dynamique cérébrale associée à la perception auditive consciente, nous avons cherché à en caractériser les mécanismes de traitements informationnels observables à l'échelle cérébrale macroscopique. 
+Des mesures de l'activité cérébrale permettent l'utilisation d'indicateurs du signal neuronal et permettent ainsi de mieux caractériser la dynamique de la construction du percept auditif lors de la perception consciente. 
+Sur la base de nombreux travaux expérimentaux pour caractériser la dynamique cérébrale associée à l'accès conscient, plusieurs approches ont été proposées dans le but de fournir des modèles de la conscience. 
+Une première approche, pragmatique, vise à caractériser la dynamique cérébrale à travers la caractérisation directe du signal au moyen d'outils de mesures des caractéristiques statistiques du signal électrophysiologique. 
+Une seconde approche, théorique, vise à caractériser la conscience sur la base de l'utilisation de mesures théoriques de l'état de conscience issues de théories de la conscience. 
+Ces deux approches ont été utilisées dans cette thèse afin de mettre en évidence des marqueurs bioéletriques pertinents qui à terme pourraient aider à compléter les processus de contrôle dans le cockpit.
+
+Nous avons donc cherché à tester ces deux approches sur la base de l'efficacité des mesures qu'elles offrent dans leur capacité à rendre compte de la dynamique associée à l'accès conscient d'un percept auditif. 
+Pour cela, nous avons orienté notre recherche vers des marqueurs du signal EEG qui serait potentiellement utilisables à terme pour permettre le suivi de l'accès conscient à un stimulus auditif. 
+Nous souhaitions comprendre la dynamique de la construction du percept auditif conscient et son lien avec les dynamiques de traitements informationnels à l'échelle cérébrale macroscopique. 
+Pour étudier les aspects dynamiques des traitements de l'information associés à la perception consciente, il est nécéssaire de considérer un socle théorique d'étude. 
+Le signal électrophysiologique est un signal variant dans le temps, rendant l'étude de sa variation intéressante dans la mesure où cela consiste en une représentation de l'incertitude et donc de l'information qui lui est associée. 
+Les théories de l'information (TI) et de l'information intégrée (TII) sont deux approches qui, se basant sur cette représentation, permettent une étude approfondie de l'information associée aux signaux neuronaux. 
+La première permet de comprendre l'information présente dans l'activité neuronale comme un reflet de l'incertitude associée à sa variabilité intrinsèque. 
+Tandis que la deuxième, permet sur la base de la première, de quantifier le transfert informationnel transitant entre les différents modules cérébraux, et donc de rendre compte à un niveau supérieur de traitement de l'intégration d'information associée à un état ou un contenu de conscience donné. 
+
+Ces deux théories permettent ainsi une voie de quantification du signal neuronal lié à l'état cérébral lors de la perception auditive consciente en fournissant : i) des connaissances sur les mécanismes et processus de traitement de l'information à l'œuvre lors de phénomènes perceptifs conscients et ii) un ensemble d'indicateurs potentiels susceptibles de pouvoir indiquer et caractériser ces phénomènes à l'échelle cérébrale macroscopique. 
+Les outils issus de ces deux théories nous fournissent par conséquent un moyen de : i) quantifier le contenu informationnel associés à des signaux neuronaux issus de l’activité corticale recueillis par EEG lors d'expérimentations de MI réalisées chez le sujet humain adulte sain ; ii) quantifier la transmission d'information entre zones cérébrales distinctes ; et iii) quantifier l'intégration de l'information à l'échelle cérébrale macroscopique dans la perception consciente. 
+
+Sur la base de ces deux théories et des mesures trouvées dans la littérature, nous avons donc catégorisé les signatures cérébrales sur la base des dimensions qu'elles supportent : i) la première se situant au niveau du contenu informationnel associé au signal neuronal (\textit{i.e.}, l'information «contenue» dans le signal temporel à l'échelle locale) ; ii) la deuxième abordant un niveau supérieur, celui du transfert informationnel (\textit{i.e.}, le transfert d'information entre signaux temporels issus de zones localisées différentes) ; et iii) la troisième et dernière catégorie se situant à un niveau plus global du système et se basant sur l'intégration d'information à une échelle déterminée (\textit{i.e.}, l'information intégrée entre des zones cérébrales localisées d'un point de vue du système global). 
+Pour étudier ces aspects, nous avons réalisé une étude électrophysiologique par EEG (étude II), en se basant sur les ensembles de combinaisons de paramètres recueillis à partir de la première étude (étude I). 
+
+Dans cette deuxième étude, nous avons utilisé un paradigme de MI sous EEG, nous portant à vouloir reproduire des résultats importants issus de la littérature sur les corrélats neuronaux de la perception auditive consciente. 
+Dans ce paradigme de MI, des réponses évoquées à la stimulation ont été corrélées à la perception auditive consciente des sujets vis-à-vis de tonalités détectées dans le stimulus.
+Ces résultats ont mis en évidence qu'une forme d'onde négative, localisée dans les cortex auditifs dans une fenêtre temporelle de $50$-$250$~ms, serait étroitement liée à la perception auditive consciente de la cible auditive. 
+Ensuite, nous avons cherché à déterminer comment les mesures du signal neuronal caractérisaient la perception auditive consciente du flux de tonalités cible, et quelles étaient les zones sous-tendant cette caractérisation. 
+L'évolution du contenu informationnel et de la complexité de l'activité associée à des aires cérébrales telles que les aires frontales (impliquées dans les traitements attentionnels, processus exécutifs et associations), les aires temporales (impliquées dans le traitement des sons) et les aires pariétales (impliquées dans les traitements sensoriels et associations) apporte une information importante sur les mécanismes associés aux processus de perception consciente. 
+Puis, nous avons souhaité déterminer plus spécifiquement l'importance des mécanismes d'échange de l'information entre les cortex temporal, frontal et pariétal lors de la perception auditive consciente. 
+Enfin, abordant l'approche théorique, nous avons cherché à savoir si des mesures d'information intégrée issues de la TII étaient susceptibles de pouvoir être utiles pour caractériser la perception auditive consciente. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Organisation du document}
+\addcontentsline{toc}{section}{Organisation du document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ce manuscrit s'organise en 4 parties. 
+La première partie est consacrée, au travers des chapitres 1 et 2 à la présentation de l'état de l'art et au cadre théorique de travail en regard des concepts généraux liés à la perception d'un signal sonore et de la façon dont on peut caractériser la dynamique associée aux différents mécanismes informationnels à l'échelle cérébrale macroscopique. 
+Le chapitre 1 présente des généralités sur l'audition humaine, l'analyse de la scène auditive, la perception auditive consciente et les phénomènes de masquage auditif qui en découlent, ainsi que sur leurs corrélats neurophysiologiques.  
+Le chapitre 2 présente plusieurs modèles de conscience actuels ainsi que des mesures issus des théories de l'information et de l'information intégrée de la conscience pouvant être considérées comme de possibles indicateurs du signal EEG associés à la perception auditive consciente. 
+Dans une deuxième partie, nous décrivons notre contribution expérimentale, au travers des chapitres 3, 4 et 5, et présentons les deux études expérimentales qui ont été menées dans cette thèse. 
+Le chapitre 3 présente le protocole expérimental de masquage informationnel ainsi que les outils de modélisation de données de survie que nous avons utilisé. 
+Le chapitre 4 présente la première étude, comportementale (étude I), où la détection d'un signal sonore en environnement bruité a été étudiée au moyen du paradigme de MI. 
+Dans cette étude, nous avons cherché à déterminer l'influence des caractéristiques du stimulus sur la construction du percept auditif. 
+Le chapitre 5 présente la seconde étude, électrophysiologique (étude II), où la dynamique de la construction du percept auditif lors de la perception consciente a été étudiée. 
+Dans cette étude, plusieurs indicateurs ont été étudiés afin de voir leur potentiel à indiquer la perception consciente du signal auditif cible. 
+Dans une troisième partie, nous présentons une discussion générale (chapitre 6) des résultats obtenus dans la thèse au regard de la littérature en en précisant les limites. 
+Finalement, nous terminons le manuscrit par la présentation d'un ensemble de perspectives possibles en rapport avec les travaux menés dans cette thèse et enfin par une conclusion générale.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage\null\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

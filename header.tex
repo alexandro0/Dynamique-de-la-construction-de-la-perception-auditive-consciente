@@ -1,0 +1,83 @@
+% \usepackage{natbib} % required in .cls
+% \usepackage{babel} % required in .cls
+% \usepackage{caption} % required in .cls
+% \usepackage{graphicx} % required in .cls
+
+% \usepackage{babel}[frenchb]
+% \usepackage{babel}
+% \usepackage[natbibapa]{apacite}
+% \usepackage[style=authoryear]{biblatex}
+% \addbibresource{refs.bib}
+
+% \bibliographystyle{apacite}
+% \printbibliography
+
+\usepackage[utf8]{inputenc}
+\usepackage[autostyle=true]{csquotes}
+\usepackage{amsmath,amssymb}
+\usepackage[export]{adjustbox}
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{subcaption}
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[final]{pdfpages}
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+\usepackage{slashbox}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{float}
+\usepackage[width=\textwidth]{caption}
+\usepackage{multicol}
+% \usepackage{longtable}
+
+% \usepackage{pdflscape}
+\usepackage{lscape}
+\usepackage{rotating}
+
+\providecaptionname{french}{\abbrevname}{Liste des abréviations}
+\providecaptionname{french}{\acknowledgementname}{Remerciements}
+\providecaptionname{french}{\authorshipname}{Déclaration d'auteur}
+\providecaptionname{french}{\constantsname}{Constantes Physiques}
+\providecaptionname{french}{\symbolsname}{Liste des symboles}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\renewcommand*\listfigurename{Liste des figures}
+
+\definecolor{ForestGreen}{RGB}{34,139,34}
+
+\geometry{verbose, tmargin=2.cm, bmargin=2.cm, lmargin=2.5cm, rmargin=2.5cm} 
+
+\thesistitle{Dynamique de la construction de la perception auditive consciente : \\ Aspects électrophysiologiques et corrélats informationnels neuronaux}
+
+\examiner{
+{\normalsize \flushleft \textbf{Mme. Mireille \textsc{Bonnard}} --- DR, INS, INSERM, Marseille --- Présidente} \\
+{\normalsize \flushleft \textbf{M. Frédéric \textsc{Alexandre}} --- DR, IMN, CNRS, Bordeaux --- Examinateur} \\
+{\normalsize \flushleft \textbf{M. Nathan \textsc{Faivre}} --- CR, LPNC, CNRS, Grenoble --- Rapporteur} \\ 
+{\normalsize \flushleft \textbf{M. Alexandre \textsc{Zénon}} --- CR, INCIA, CNRS, Bordeaux --- Rapporteur} 
+}
+
+\supervisor{
+{\normalsize \flushleft \textbf{M. Laurent \textsc{Pezard}} --- PU, LNC, CNRS, Marseille --- Directeur} \\ 
+{\normalsize \flushleft \textbf{M. Jean-Christophe \textsc{Sarrazin}} --- IR, ONERA, Salon-de-Provence --- Co-Directeur}
+}
+
+\degree{Doctor of Philosophy}
+\author{Alexandre \textsc{Veyrié}}
+\subject{Sciences de la Vie et de la Terre}
+\keywords{Perception, Dynamique, Information, Électrophysiologie}
+\university{{\href{https://www.univ-amu.fr/}{Aix Marseille Université}}}
+\department{\href{https://lnsc.fr/}{LNC - Laboratoire de Neurosciences Cognitives}}
+\group{\href{https://www.onera.fr/}{ONERA - Office National des Études sur les Recherches Aérospatiales}}
+\faculty{\href{http://faculty.university.com}{Faculty Name}} 
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywordnames} % Set PDF's keywords to your keywords
+}
+

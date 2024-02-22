@@ -1,0 +1,367 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Masquage informationnel et analyses de données}
+\label{chapitre3}
+\noindent \hrulefill \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans cette seconde partie, nous présentons nos contributions expérimentales sur la caractérisation de la construction de la perception auditive consciente. 
+En s'inspirant de l'ensemble des résultats et méthodes présentés dans la première partie, notre étude de la construction du percept auditif conscient chez le sujet humain adulte sain s'appuie sur un protocole expérimental de masquage informationnel associé à l'enregistrement de l'activité cérébrale par électroencéphalographie. 
+
+Dans un premier temps, nous avons élaboré une première étude (étude I, chapitre $4$) afin d'étudier l'influence des paramètres du stimulus sur la dynamique de la perception auditive consciente d'un point de vue psychoacoustique. 
+Cette étude était composée de trois expériences comportementales indépendantes de MI. 
+Nous avons notamment cherché à donner une description des effets de l'incertitude du masqueur, de la similarité cible-masqueur et du taux de répétition de la cible sur la dynamique de la conscience perceptive de la cible.
+
+La majorité des études sur le MI ont utilisé soit le pourcentage de discrimination, soit les temps de réaction (\textit{i.e.}, temps pour détecter la cible) moyens et la performance des participants est habituellement étudiée au travers d'indicateurs issus de la théorie de détection du signal tels que les taux de détections correctes, les taux de fausses alarmes et l'indice de performance $d^\prime$. 
+Le décours temporel est quant à lui étudié sur la base des temps de réaction. 
+Ce sont des indices statiques et classiques qui sont dès lors utilisés pour quantifier la performance de discrimination ou temporelle des participants dans les études comportementales du MI. 
+De ce fait, la littérature ne fournit pas suffisamment d'information concernant le décours temporel exact de la construction de la perception auditive consciente en fonction des différents paramètres construisant le stimulus. 
+Ce manque d'information ne nous permettait pas de mettre en place un paradigme expérimental adapté à l'utilisation des mesures d'information et de complexité de la dynamique cérébrale associée à la construction de la perception auditive consciente. 
+L'étude I a cherché à combler ce déficit en étudiant l'effet de différents paramètres du MI sur le décours temporel de la construction du percept auditif grâce à des modèles statistiques adaptés aux donnés de durées. 
+
+Les données de durées sont souvent utilisées dans les études comportementales et consistent généralement en des variables dont la distribution est positive et dissymétrique, violant l'hypothèse de normalité. 
+Les études classiques sur les temps de réaction moyens utilisent donc des données de durées pour lesquelles les indices statiques basés sur la normalité ne semblent pas adaptés \citep{george2014survival, letue2018statistical}. 
+En effet, du fait de la nature temporelle intrinsèque de ces données, elles requièrent une méthodologie statistique spécifique, quasi systématiquement négligée dans la littérature utilisant les temps de réaction. 
+En fonction du paradigme d'étude, ces données de durées peuvent être considérées comme des données de «survie» incomplètes limitées dans le temps. 
+On trouve dans la littérature la notion de «temps à l'évènement» («time-to-event data») pour décrire de telles données. 
+Les modèles de survie (pour revue, voir \cite{andersen1993statistical}) ont ainsi été introduits pour modéliser les données de durées. 
+Dans l'étude I, nous avons donc utilisé des analyses de données de survie afin d'obtenir une description probabiliste sur la dynamique de la perception auditive. 
+
+Dans un second temps, sur la base des résultats de la dynamique de la construction du percept auditif obtenus, nous avons adapté le protocole de cette première étude afin de mettre en place une nouvelle étude (étude II, chapitre $5$) de MI dans laquelle l'activité cérébrale des sujets était enregistrée. 
+La détermination de l'influence des paramètres des stimuli à la fois sur la performance et sur la détection de la cible auditive a permis de mettre en place les conditions expérimentales favorables à une étude spécifique de l'activité cérébrale associée à la dynamique de la perception auditive consciente. 
+Dans cette étude II, nous avons donc cherché à caractériser les corrélats neuronaux de la construction du percept auditif en se basant sur les méthodes présentées précédemment et sur la mesure de l'activité cérébrale au moyen de l'EEG. 
+
+Dans ce chapitre, nous donnerons tout d'abord une description détaillée du protocole expérimental de MI qui sera utilisé dans les études I et II. 
+Nous y présenterons les principaux paramètres construisant les stimuli. 
+Ensuite, nous fournirons une introduction aux modèles de survie qui permettent de décrire de façon probabiliste la construction du percept auditif conscient en fonction des paramètres dans chacune des études. 
+Pour cela, nous présenterons le formalisme de l'analyse de survie des temps de détection et détaillerons les deux modèles principaux que sont : les modèles de Cox et les modèles de fragilité.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Construction des stimuli}
+\label{constructionstimuli}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le paradigme de masquage informationnel consiste en un protocole expérimental de psychoacoustique dans lequel une cible est intégrée dans du bruit masquant \citep{kidd2008informationalreview, neff1987masking, richards2004cuing}. 
+Dans ce paradigme, la cible et le masqueur sont construits sur la base de plusieurs caractéristiques. 
+Les deux caractéristiques fondamentales du MI --- incertitude du masqueur et similarité cible-masqueur --- sont des paramètres impactant fortement la détection de la cible et indiquant ainsi la complexité du stimulus. 
+Le taux de répétition des tonalités de la cible (\textit{i.e.}, le nombre de tonalités par seconde de la cible) est également un paramètre déterminant du MI. 
+Manipuler ces différentes caractéristiques permet de faire varier les niveaux de complexité des stimuli et ainsi d'influencer la réponse comportementale des individus. 
+En jouant sur cette quantité de masquage produite, on peut alors chercher à provoquer des variations dans la dynamique de la perception auditive consciente. 
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\linewidth]{Figures/illustrations/Exp_EEG/trial.pdf}
+\caption[Illustration graphique d'un stimulus de masquage informationnel]{Exemple de stimulus auditif. Un flux de tonalités cible (en rouge) est présenté, ou non, en fonction des essais, dans un masqueur multi-tonalités aléatoire en temps et en fréquence (en noir). Une largeur de bande rectangulaire ERB (en vert) est disposée de part et d'autre de la fréquence de la cible de manière à éviter le masquage énergétique. La fréquence de la cible est fixée ici à $1000$~Hz avec une durée de $60$~ms et un taux de répétition de tonalités à $1$~Hz. Les tonalités aléatoires du masqueur s'étendent de $239$ à $5000$~Hz en échelle logarithmique et ont une durée de $20$~ms. Le nombre de fréquences par octave du masqueur est de $32$~fpo avec une distribution ITI de $\mu = 800$ ms.}
+\label{fig:figure3illustrationstimulus}
+\end{figure*}
+
+En premier lieu, nous avons cherché à mettre en place une situation expérimentale de MI afin de pouvoir créer des stimuli de niveau de complexité et d'incertitude différents. 
+Nous avons élaboré le paradigme sur la base des éléments de la littérature et des différents paramètres acoustiques associés aux signaux cible et masqueur. 
+Au préalable, nous avons réalisé des tests préliminaires sur un panel d'une vingtaine de sujets adultes sains issus de l'ONERA. 
+Ces prétests, qui ne sont pas présentés plus en détails dans le manuscrit, nous ont permis d'échantillonner les valeurs les plus pertinentes des paramètres à l'étude.
+La Figure~\ref{fig:figure3illustrationstimulus} présente un exemple d'illustration graphique d'une stimulation auditive issue de notre protocole expérimental de MI. 
+
+Le signal cible comporte trois paramètres : la fréquence fondamentale des tonalités cibles (en Hz), la durée des tonalités cibles (en ms) et le taux de répétition de ses tonalités, c'est à dire le nombre de tonalités par seconde (en Hz). 
+Le signal masqueur, quant-à lui se compose de quatre paramètres : l'ensemble de fréquences des tonalités (allant de $239$ à $5000$ en échelle logarithmique, en Hz), le nombre de séquences fréquentielles par octave (en fpo), la durée des tonalités (en ms) et les intervalles moyens entre les tonalités du masqueur (en ms). 
+
+\begin{table}[!ht]
+\centering
+\footnotesize
+\caption[Table de l'ensemble des paramètres construisant les stimuli du protocole de masquage informationnel]{Table récapitulative de l'ensemble des paramètres du stimulus dans notre protocole de MI. 
+% Trois paramètres caractérisent le signal cible : fréquences fondamentales, taux de répétition et durée des tonalités. Quatre paramètres caractérisent le signal masqueur : fréquences fondamentales, nombre de séquences fréquentielles, intervalles moyen entre les tonalités et durée des tonalités. Enfin, le dernier paramètre caractérise la similarité temporelle entre la cible et le masqueur comme déterminé par la valeur de la différence entre les durées des tonalités du masqueur et de la cible.
+}
+\label{fig:table3parametres}
+\begin{tabular}{|l||*{2}{c|}}\hline
+\textbf{Paramètres} & {\textbf{Valeurs}} \\\hline\hline
+\textbf{Fréquences Cible (Hz)} & 489, 699, 1000, 1430, 2045, 2924 \\\hline
+\textbf{Fréquences Masqueur (Hz)} & 239~:~5000 (échelle log.) \\\hline
+\textbf{Taux Tonalité Cible (Hz)} & 1, 2, 5, 10, 20 \\\hline
+\textbf{Durée Tonalité Cible (ms)} & 20, 60, 100 \\\hline
+\textbf{Durée Tonalité Masqueur (ms)} & 20, 60, 100 \\\hline
+\textbf{Fréquences par octave (fpo)} & 4, 16, 32, 64, 96, 128 \\\hline
+\textbf{Intervalle inter-tonalités (ms)} & 200, 600, 800, 1200 \\\hline
+\textbf{Similarité Cible Masqueur} & -80, -40, 0, +40, +80 \\\hline
+\end{tabular}
+\end{table}
+
+La similarité entre la cible et le masqueur a été spécifiée dans la dimension temporelle. 
+On parlera alors de similarité temporelle entre la cible et le masqueur, mesurée par la valeur de la différence entre les durées des sons du masqueur et de la cible.
+Les tonalités cibles étaient présentées au même niveau que les tonalités individuelles du masqueur, c'est-à-dire un rapport d'intensité cible/masqueur de $0$~dB \citep{dykstra2016neural}. 
+La Table~\ref{fig:table3parametres} présente un récapitulatif de l'ensemble des paramètres utilisés pour la construction des stimuli de MI pour chacune des expérimentations. 
+
+Nous avons calculé un indice d'incertitude du masqueur en utilisant l'entropie de la distribution des tonalités. 
+Celle-ci dépend de l'intervalle moyen entre les tonalités et le nombre de fréquences de tonalité par octave. 
+Puisque les intervalles inter-tonalités du masqueur ont été tirés d'une distribution uniforme avec un intervalle $\Delta$ (en ms) entre les intervalles inter-tonalités minimum et maximum, l'entropie $H$ de cette distribution uniforme est : $H(x) = \log(\Delta)$. 
+En considérant chaque séquence fréquentielle du masqueur comme un processus indépendant, l'entropie de l'ensemble du masqueur $M$ pour $n$ fréquences par octave est : $H(M) = n \log(\Delta)$. 
+Si $X$ représente une V.A de même loi et indépendante alors $H(X_1, \ldots, X_n) = -n~ln~\frac{1}{\Delta} = n~ln~\Delta$. 
+D'une part, l'incertitude du masqueur augmente avec le nombre de séquences fréquentielles par octave.
+D'autre part, l'incertitude du masqueur augmente avec l'écart entre les tonalités du masqueur.
+Cela signifie que, plus les tonalités du masqueur s'éloignent dans le temps, moins elles sont prédictibles, augmentant par conséquent l'incertitude globale du masqueur. 
+Les valeurs de l'indice d'incertitude (\textit{i.e.}, entropie en nats) pour toutes les combinaisons des paramètres du masqueur sont présentées dans la Table~\ref{fig:table3incertitudemasqueur}.
+
+\begin{table}[!ht]
+\centering
+\footnotesize
+\caption[Table des valeurs d'incertitude du masqueur et correspondances avec les paramètres du masqueur]{Table de correspondance entre les valeurs d'incertitude du masqueur avec les valeurs de fréquences par octave et d'intervalles moyens entre les tonalités du masqueur.}
+\label{fig:table3incertitudemasqueur}
+\begin{tabular}{|l||*{7}{c|}}\hline
+\backslashbox{\textbf{MITI (ms)}}{\textbf{MFPO (fpo)}} & 
+\makebox[1em]{\textbf{4}} & \makebox[1em]{\textbf{8}} & 
+\makebox[1em]{\textbf{16}} & \makebox[1em]{\textbf{32}} & 
+\makebox[1em]{\textbf{64}} & \makebox[1em]{\textbf{96}} & 
+\makebox[1em]{\textbf{128}} \\ \hline \hline
+\textbf{300} & 21.19 & 42.38 & 84.77 & 169.54 & 339.09 & 508.63 & 678.18 \\\hline
+\textbf{700} & 25.58 & 51.17 & 110.52 & 204.70 & 409.40 & 614.10 & 818.80 \\\hline
+\textbf{1100} & 27.63 & 55.26 & 114.97 & 221.04 & 442.09 & 663.14 & 884.19 \\\hline
+\textbf{1500} & 28.97 & 57.95 & 118.34 & 231.81 & 463.63 & 695.44 & 927.26 \\\hline
+\textbf{2300} & 30.78 & 61.56 & 123.13 & 246.27 & 492.55 & 738.83 & 985.11 \\\hline
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analyses de survie des temps de détection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Objectifs et fondements}
+\label{objectifsetfondements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La détection d'un signal cible au cours du temps peut être considérée comme une variable binaire. 
+À la fin d'un essai donné, le sujet a détecté ou non le signal cible. 
+Cependant, comme un essai est de durée finie, nous ne sommes pas en mesure de savoir si le sujet n'aurait pas détecté la cible pour une durée d'essai plus longue. 
+Face à cette inconnue, il existe des méthodes d'analyses utilisées dans plusieurs champs de recherche comme les secteurs biomédical et industriel ou encore même dans l'actuariat (\textit{i.e.}, assurance et gestion prédictive des risques). 
+
+Lorsque l'on s'intéresse à la survenue au cours du temps d'un évènement dont la sortie est binaire, ces données de durées sous-jacentes sont souvent désignées sous le terme de «données de survie». 
+Le terme de données de survie est usuellement employé en statistiques cliniques pour décrire la survie de patients et pour comparer des groupes de patients et les facteurs susceptibles d'expliquer la survenue d'un décès (et donc la «survie») au cours du temps. 
+Elles décrivent plus généralement des données qui mesurent le temps $T$ à un événement $E$ d'intérêt donné. 
+L'évènement étudié $E$ peut être compris comme le passage ou la transition entre deux états d'un système $S$ donné. 
+Les analyses portant sur ce type de données de survie sont appelées «analyses de survie». 
+Les durées de survie correspondent à des variables aléatoires généralement non-négatives, de distribution le plus souvent dissymétrique, rendant difficile leur description par la loi normale. 
+
+Dans le cadre d'une tâche de détection du signal classique, le participant doit détecter une cible sur une période temporelle généralement définie par la durée de l'essai. 
+Les essais où le sujet ne détecte rien alors qu'un signal cible est présent sont appelés omissions. 
+Dans ce cas, la cible n'ayant pas été détectée jusqu'à la fin de la période d'observation, le temps d'apparition de la détection est dit «censuré» à droite.
+
+L'existence de données censurées ou d'observations incomplètes dans le temps, est caractéristique des données de survie. 
+Cela signifie que le délai exact de détection du signal cible par le sujet, lequel est non-observé, est supérieur ou égal à son délai de suivi, visible sur ce que l'on appelle des «tables de vie» (Figure \ref{fig:figure3essaiettabledevie}). 
+Cette incomplétude des données provient du fait que nous n'avons pas accès à toute l'information sur les données du fait de leur durée. 
+L'observation de la réalisation de la variable aléatoire $T$ est soumise à diverses perturbations, lesquelles peuvent être indépendantes ou non du phénomène étudié. 
+
+Les analyses de survie représentent donc un terme générique pour toute analyse de l'occurrence d'un évènement au cours du temps en présence de données censurées. 
+Les analyses de survie permettent de représenter en termes probabilistes les dynamiques d'occurrences des évènements d'intérêts. 
+Cela permet la comparaison des dynamiques d'occurrences d'évènements sous l'effet de différents facteurs et de savoir dans quelle mesure chaque facteur vient modifier ces dynamiques. 
+Ce type d'analyse permet dès lors de décrire et de comparer les temps de détection de la cible en fonction des différents facteurs manipulés. \\
+
+\begin{figure*}[!t]
+\centering
+% \includegraphics[width=0.9\linewidth]{Figures/illustrations/Exp_EEG/lifetimes_sujet_12.pdf}
+\includegraphics[width=0.9\linewidth]{Figures/illustrations/Exp_I/lifetimes_S7}
+\caption[Illustration graphique d'une table de vie]{Exemple de «table de vie» (ou «temps à l'évènement»). Sur l'axe des abscisses est représenté le décours temporel de l'essai (en ms) et sur l'axe des ordonnées les différents essais (avec cible) du participant. À droite, la ligne verticale pointillée des $12$~secondes représente la censure des données. En rouge, sont figurés les essais pour lesquels la cible a été détectée à un temps donné (\textit{i.e.}, l'appui-bouton), tandis qu'en bleu sont figurés les essais pour lesquels la cible n'a pas été détectée (\textit{i.e.}, omissions/survies).}
+\label{fig:figure3essaiettabledevie}
+\end{figure*}
+
+Quatre informations sont essentielles pour pouvoir réaliser correctement une analyse de survie : 
+\begin{itemize}
+\item[1.] Temps d'origine : temps pour lequel débute la période d'observation. 
+\item[2.] Temps de fin : temps pour lequel termine la période d'observation. 
+\item[3.] Temps de détection : temps de détection pour un essai. 
+\item[4.] Évènement "en tout ou rien" : survenue ou non de la détection au temps correspondant. \\
+\end{itemize} 
+
+Pour la suite, on notera $T$, une variable aléatoire réelle (VAR) qui correspond à la durée de survie jusqu'à l'évènement d'intérêt. 
+Ici $T$ représente le temps d'occurrence de la détection de la cible. 
+$T$ est alors considérée comme une variable continue. 
+Cette VAR est donc liée à plusieurs fonctions qui décrivent son comportement. 
+
+\paragraph{Fonction de répartition F(t)\\}
+La fonction de répartition $F(t)$ est la probabilité que l'évènement $T$ survienne avant l'instant $t$, c'est-à-dire la probabilité de détecter la cible avant l'instant $t$ (Figure \ref{fig:chap3fonctionsrepartitionsurvie}) :
+
+\begin{equation}
+F(t) = Pr(T \leq t) = \int_0^t f(x) dx
+\end{equation}
+où $f(x)$ correspond à la fonction de densité de probabilité (p.d.f).
+
+\paragraph{Fonction de survie S(t)\\}
+La fonction de survie $S(t)$ est la probabilité que l'évènement $T$ ne survienne pas avant l'instant $t$, c'est-à-dire la probabilité de ne pas détecter la cible avant l'instant $t$ (Figure \ref{fig:chap3fonctionsrepartitionsurvie}). 
+C'est donc la probabilité que le temps d'occurrence de la détection $T$ soit supérieur à l'instant $t$ :
+
+\begin{equation}
+S(t) = Pr(T > t) = 1 - F(t) = \int_t^{\infty} f(x) dx
+\end{equation}
+où $S$ est une fonction décroissante telle que $S(0)=1$ si $P(T=0)=0$ et que $\lim\limits_{t \to \infty} S(t) = 0$.
+
+\paragraph{Fonction de densité de probabilité f(t)\\}
+Dans le cas où la fonction de répartition $F(t)$ admet une dérivée en $t$, la fonction de densité de probabilité $f(t)$ est :
+
+\begin{equation}
+f(t) = F'(t) = \frac{d}{dt} F(t) = \lim\limits_{\Delta t \to 0} \frac{P(t < T \leq t + \Delta t)}{\Delta t} = -~S'(t)
+\end{equation}
+
+Ainsi, pour une période temporelle $t$ fixe, $f(t)$ est égale à la probabilité de détecter la cible dans un intervalle de temps $[t;t+dt]$. 
+
+\paragraph{Fonction de risque $\lambda(t)$\\}
+La fonction de risque $\lambda(t)$, également appelée fonction de risque instantané (parfois notée $h(t)$ pour «hazard function» en anglais), spécifie le taux instantané de détection à un instant $T=t$ donné sachant que la détection n'a pas eu lieu jusqu'à $t$. 
+C'est donc la probabilité de détecter la cible dans un intervalle de temps $[t;t+dt]$, sachant qu'elle n'a pas été détectée avant $t$. 
+
+\begin{equation}
+\lambda(t) = \lim\limits_{\Delta t \to 0} \frac{Pr(t \leq T<t+\Delta t~|~T \geq t)}{\Delta t} = \frac{f(t)}{S(t)} = -\frac{S'(t)}{S(t)}
+\end{equation}
+
+Le numérateur est une probabilité conditionnelle et le dénominateur un intervalle temporel, ainsi la fonction de risque est un taux et non une probabilité, présentant des valeurs dans $[0, \infty[$. 
+On peut la considérer comme une mesure de l'intensité du potentiel de la détection à l'instant $t$. 
+La fonction de risque est plus informative sur le mécanisme sous-jacent à la détection que la fonction de survie. 
+Modéliser la fonction de risque est donc une méthode importante pour résumer un ensemble de données de survie. 
+
+\paragraph{Fonction de risque cumulé $\Lambda(t)$\\}
+La fonction de risque cumulé $\Lambda(t)$, également nommée fonction de risque instantané cumulatif (parfois notée $H(t)$) est l'intégrale de la fonction de risque $\lambda(t)$. 
+Du fait de sa relation avec la fonction de survie $S(t)$, la fonction de risque cumulé $\Lambda(t)$ est une quantité utile dans les analyses de survie :
+
+\begin{equation}
+\Lambda(t) = \int_0^t \! \lambda(x) \, \mathrm{d}x  = -~ln~S(t)
+\end{equation}
+
+\begin{landscape}
+\begin{figure*}[!t]
+\centering
+\begin{tabular}{ccc}
+\scriptsize{Fonction de répartition} & \scriptsize{Fonction de survie} & \scriptsize{Fonction de risque}\\
+% \includegraphics[width=0.43\textwidth,height=0.35\textheight]{illustrations/Exp_PA/exemple_fonction_distribution_cumulé.pdf} & 
+% \includegraphics[width=0.43\textwidth,height=0.35\textheight]{illustrations/Exp_PA/exemple_fonction_survie.pdf} & 
+% \includegraphics[width=0.46\textwidth,height=0.35\textheight]{illustrations/Exp_PA/exemple_fonction_hazard_cumulé.pdf} 
+\includegraphics[width=0.44\textwidth,height=0.25\textheight]{illustrations/Exp_EEG/Exp_EEG_CDF_uncertainty.pdf} & 
+\includegraphics[width=0.44\textwidth,height=0.25\textheight]{illustrations/Exp_EEG/Exp_EEG_SF_uncertainty.pdf} & 
+\includegraphics[width=0.44\textwidth,height=0.25\textheight]{illustrations/Exp_EEG/Exp_EEG_HF_uncertainty.pdf} 
+\end{tabular}
+\caption[Exemples de fonctions associées aux modèles de données de survie]{Exemples de fonctions associées aux modèles de données de survie. (Gauche) Fonction de répartition $F(t)$. La fonction de répartition $F(t)$ est la probabilité que l'évènement $T$ survienne avant l'instant $t$, c'est-à-dire la probabilité de détecter la cible avant l'instant $t$. (Milieu) Fonction de survie $S(t)$. La fonction de survie $S(t)$ est la probabilité que l'évènement $T$ ne survienne pas avant l'instant $t$, c'est-à-dire la probabilité de ne pas détecter la cible avant l'instant $t$. (Droite) Fonction de risque $h(t)$. La fonction de risque $h(t)$ est le taux instantané de détection à un instant $T=t$ donné sachant que la détection n'a pas eu lieu jusqu'à $t$. Chacune des courbes de couleur correspond à l'une des modalités d'un paramètre spécifiquement étudié dans l'étude I.}
+\label{fig:chap3fonctionsrepartitionsurvie}
+\end{figure*}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modèles de survie}
+\label{modelesdesurvie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Les modèles de survie sont des modèles statistiques adaptés aux données de survie \citep{andersen1993statistical}. 
+Lorsque l'on réalise une modélisation de données de survie, une approche semi-paramétrique est habituellement employée. 
+Son objectif est d'évaluer l'effet de différentes variables explicatives sur la durée de survie. 
+Comme nous cherchons à évaluer l'effet de différents paramètres du stimulus sur la détection du signal cible, nous avons utilisé cette approche semi-paramétrique. 
+L'approche semi-paramétrique est la plus couramment employée pour l’ajustement des modèles d'analyse de données de survie et bénéficie d'une importante littérature. 
+Dans ce type d'approche, le modèle de régression le plus communément utilisé est le modèle de Cox \citep{cox1972regression}, également connu sous le nom de modèle de régression à risques proportionnels de Cox. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modèle de régression à risques proportionnels de Cox}
+\label{modeledecox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+En 1972, David Cox publie un article posant les bases d'un cas particulier important de modèle de régression à risques proportionnels liant les variables explicatives $X$ à la fonction de risque $\lambda(t)$ \citep{cox1972regression}. 
+L'utilisation du modèle de Cox dans le contexte de notre étude revient à étudier le risque de détection de la cible par un individu en fonction des paramètres définissant la stimulation,
+Pour cela, le modèle de régression à risques proportionnels de Cox exprime la fonction de risque $\lambda$ en fonction du temps $t$ et des covariables \textbf{X}:$\{X^1, \ldots, X^j, \ldots, X^p\}$ de la manière suivante :
+
+\begin{align} 
+\lambda(t|\textbf{X}) &= \lambda_0(t)~.~e^{\beta.\textbf{X}}\\
+\lambda_{i} (t|\textbf{X}) &= \lambda_0(t)~.~e^{\beta_1 X_i^1 + \ldots + \beta_j X_i^j + \ldots + \beta_p X_i^p}\\
+\lambda_{i} (t|\textbf{X}) &= \lambda_0(t) \times e^{\beta_1 X_i^1} \times \ldots \times e^{\beta_j X_i^j} \times \ldots \times e^{\beta_p X_i^p}
+\end{align}
+où $\lambda_i(t)$ est la fonction de risque pour le $i^{eme}$ sujet et $\lambda_0(t)$ est appelé le risque de base (\textit{i.e.}, fonction de risque de base). 
+Il correspond au risque instantané d'apparition de l'évènement lorsque toutes les covariables $X$ sont nulles. 
+Le modèle fait l'hypothèse d'un «risque de base» qui est commun à tous les individus dans la population à l'étude. 
+De cette manière, pour un sujet $i$ donné, la fonction $\lambda_i(t,X_i)$ correspond au risque instantané de la détection du signal à l'instant $t$ sachant qu'elle n'est pas apparue avant $t$. 
+Le modèle se base sur le fait que l'on peut décrire le risque total comme étant le produit de deux éléments. 
+Le premier élément est un risque de base, identique pour tous les individus et qui ne dépend que du temps. 
+Le second est fonction des caractéristiques des individus et des variables explicatives retenues. 
+
+Lors de la modélisation de données de survie avec un modèle de Cox, les éléments usuellement utilisés comme cœfficients de la régression sont des rapports de risques $H_R$.
+Un rapport de risques $H_R$ est le rapport des taux de risque de deux niveaux (ou modalités $A$ et $B$) d'une variable explicative : 
+
+\begin{equation}
+H_R(t|A,B) = \frac{\lambda(t|A)}{\lambda(t|B)}
+\end{equation}
+
+Le rapport de risques $H_R$ permet alors de quantifier l'effet des différents niveaux $A$ et $B$ du facteur étudié sur le risque d'apparition de l'évènement cible. 
+Un intervalle de confiance est associé au rapport de risques $H_R$, et son interprétation est identique à celle du risque relatif. 
+Par exemple, dans une étude sur un facteur ayant deux niveaux $A$ et $B$, l'échantillon ayant reçu le niveau $A$ peut présenter un risque à un taux deux fois plus élevé par unité de temps que l'échantillon ayant reçu le niveau $B$. 
+Ainsi, le risque instantané de la survenue de l'évènement cible avec le niveau $B$ correspond à la moitié du risque instantané avec le niveau $A$. 
+Le rapport de risque serait alors de 2, indiquant un risque deux fois plus élevé de survenue de l'évènement dû à l'effet du niveau $A$ du facteur étudié par rapport à l'effet du niveau $B$. 
+
+Lorsqu'une exponentiation est appliquée sur un cœfficient de la régression (\textit{i.e.}, sur un rapport de risques $H_R$), cela dénote la variation relative dans le risque de l'occurrence de la détection. 
+Les covariables $X_i^j$ ont un effet exponentiel sur la fonction de risque $\lambda$ et aucune hypothèse n'est nécessaire pour la distribution des temps de détection. 
+La nécessité d'une hypothèse sur la distribution de temps de détection est propre à l'approche paramétrique des modèles de survie. 
+Ainsi, le modèle de Cox est le plus adapté aux distributions dissymétriques comme les distributions usuelles de temps de réaction \citep{letue2018statistical}. 
+
+L'inférence statistique pour le modèle de Cox est basée sur les estimations de tels rapports de risque $H_R$. 
+Pour comprendre l'estimation des paramètres dans le modèle de Cox, on considère un ensemble d'observations $t_1,\ldots,t_n$ résultant de la répétition d'une série d'expériences aléatoires indépendantes, et on cherche à déterminer la loi des variables aléatoires correspondantes $T$. 
+On cherche parmi toutes les valeurs possibles d'un paramètre $\theta$, celle sous laquelle la probabilité d'observer les valeurs $t_1,\ldots,t_n$ est la plus élevée (\textit{i.e.}, que l'on cherche la valeur du paramètre $\theta$ qui explique le mieux les valeurs obtenues). 
+
+L’estimation des paramètres du modèle et donc des cœfficients de la régression passe par la maximisation d’une fonction de vraisemblance dite «partielle» \citep{cox1975partial}. 
+La fonction de vraisemblance, notée $L(\theta;t_1,\ldots,t_n)$ d'un modèle de données $t_1,\ldots,t_n$ est la probabilité d'observer la distibution $X_{T_1=t_1,\ldots,T_n=t_n}$ lorsque le paramètre est $\theta$. 
+L’estimation des cœfficients s’effectue en maximisant la vraisemblance obtenue en ne considérant qu’une partie de la vraisemblance totale, d’où son appelation de vraisemblance partielle. 
+Les estimateurs obtenus sont donc moins efficients que ceux découlant de la maximisation de la vraisemblance complète mais cette perte d’efficience est toutefois contrebalancée par l’avantage de ne pas avoir à spécifier de distribution particulière sur les temps de détection. 
+
+L'estimation des paramètres $\beta_j$ de la régression a été dévelopée par \cite{andersen1993statistical} et les cœfficients de la régression de covariables catégoriques peuvent apparaître instables dans le modèle. 
+Dans un modèle de régression de Cox, cette instabilité des estimations des cœfficients de la régression peut être réduite en maximisant une log-vraisemblance partielle «pénalisée» \citep{verweij1994penalized}. 
+Une fonction de pénalité des cœfficients de la régression est soustraite à la log-vraisemblance partielle. 
+Les paramètres $\beta_j$ peuvent ensuite être estimés en maximisant la log-vraisemblance partielle. 
+Une fois les estimations des cœfficients obtenues, il est possible de construire un estimateur non-paramétrique du risque de base. 
+L'estimation non-paramétrique couplée à une technique de maximisation de la vraisemblance explique que ce modèle soit qualifié de semi-paramétrique. 
+Cette flexibilité du modèle de Cox est très puissante et c'est pour cette raison qu'il est plus souvent validé en pratique sur des données de durées que les modèles linéaires mixtes classiques. 
+Cependant, l'inconvénient est que la quantité modélisée par le modèle n'est pas directement sur les données mais sur le risque instantané. 
+
+L'inférence statistique dans le modèle de Cox a été développée sous l'hypothèse que les observations sont statistiquement indépendantes \citep{rondeau2003maximum}. 
+Cette hypothèse est souvent violée en pratique car des facteurs d'ordre environnemental, génétique, ou encore comportemental, non-observables, non-observés ou inconnus influencent les observations \citep{box2006repeated}. 
+Des corrélations peuvent se produire lorsque les individus appartiennent à des groupes ou clusters distincts ou bien encore lorsque les individus expérimentent des processus d'évènements récurrents. 
+Les temps d'évènements corrélés sont des observations communes dans les études psychophysiques.
+
+Pour ces mesures à évènements répétés, la corrélation peut provenir de deux sources distinctes. 
+La première source est l'hétérogénéité à travers les individus due à des effets non-mesurables, non-mesurés ou inconnus. 
+Les caractéristiques non-mesurées partagées par les individus engendrent une variabilité importante dans les observations, communément définie comme une hétérogénéité des observations ou encore «hétérogénéité cachée». 
+La deuxième source est la dépendance entre évènements impliquant que le risque pour un évènement est une fonction de l'occurrence des évènements précédents. 
+Toute corrélation parmi les évènements viole l'hypothèse fondamentale du modèle de Cox supposant les temps d'évènements comme indépendants. 
+Le modèle de Cox peut donc être inefficient dans les contextes traditionnels de mesures répétées d'évènements de durées. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Modèle de Cox avec effets mixtes : «Modèle à fragilité»}
+\label{modeledefragilite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Les «modèles à fragilité» sont une variation du modèle de Cox qui ont été proposés dans le contexte de données de durées corrélées \citep{hougaard1995frailty, rondeau2003maximum, therneau2003penalized, wienke2003frailty}. 
+Ils permettent de prendre en compte à la fois les données censurées et les covariables dépendantes du temps et celles qui en sont indépendantes. 
+Dans un modèle à fragilité, le modèle de Cox conventionnel est renforcé à travers l'ajout de termes d'effet aléatoires (\textit{i.e.}, termes de fragilité) afin de rendre compte de l'hétérogénéité des observations dans la variable réponse. 
+Un effet aléatoire est une variable continue qui décrit le risque ou la fragilité pour des catégories distinctes, tels que des individus ou des familles d'individus \citep{therneau2003penalized}. 
+Les modèles à fragilité incorporent l'hétérogénéité dans l'estimation en faisant des hypothèses sur la distribution des termes de fragilité. 
+
+La logique sous-jacente aux modèles à fragilité est que certains sujets, groupes ou clusters d'individus sont intrinsèquement plus ou moins à risque d'expérimenter l'évènement d'intérêt. 
+La distribution de ces effets peut alors être approximée. 
+Les termes de fragilité fournissent un moyen pratique d’introduire des effets aléatoires, des associations ainsi qu'une hétérogénéité non-observée dans les modèles de données de survie traditionnels \citep{wienke2003frailty}. 
+Les termes de fragilité spécifiques au cluster ont un effet multiplicatif sur la fonction de risque de base $\lambda_0(t)$. 
+Ainsi, l'effet relatif d'un pattern de covariables donné sur la fonction de risque de base varie à travers les clusters. 
+Un modèle à fragilité est caractérisé par la distribution de ses termes de fragilité. 
+Les distributions gamma sont généralement utilisées pour modéliser une grande variété de phénomènes. 
+Plus particulièrement, les phénomènes se déroulant au cours du temps où par essence, le temps écoulé est une grandeur réelle positive. 
+C'est précisément le cas dans les analyses de survie et les analyses classiques de temps de réaction \citep{letue2018statistical}. 
+
+De façon similaire au modèle de Cox, on suppose que l'effet des facteurs se résume à une quantité réelle $e^{\beta_0.X_0}$, avec $X_0$ un facteur non observé ou inconnu. 
+La fonction de risque dans un modèle à fragilité est alors donnée par l'expression :
+
+\begin{equation}
+\lambda(t|\textbf{X},X_0) = \lambda_0(t).e^{\beta_0.X_0}.e^{\beta.\textbf{X}}
+\end{equation}
+
+Si on considère $\omega=e^{\beta_0.X_0}$ une VAR positive que l'on nomme fragilité, la fonction de risque devient :
+
+\begin{equation}
+\lambda(t|\textbf{X},\omega) = \lambda_0(t).\omega.e^{\beta.\textbf{X}}
+\end{equation}
+
+Pour un modèle de fragilité, l'estimation des paramètres est réalisée soit par une maximisation de la fonction de vraisemblance pénalisée ou soit par une maximisation simple de la fonction de vraisemblance. 
+Il a été démontré que si le modèle à fragilité étudié présente une distribution gamma, alors le modèle peut être écrit exactement sur la base d'une fonction de vraisemblance pénalisée \citep{therneau2003penalized}. 
+De cette manière, si les termes de fragilité $\omega$ sont connus, alors la log-vraisemblance des données complètes est directement calculable. \\
+
+Dans notre cas, les analyses de survie se sont révélées pertinentes du fait de leur capacité à caractériser l'influence des paramètres du stimulus sur la dynamique de la détection. 
+Les modèles de fragilité permettent de prendre en compte la corrélation au sein des données à mesures répétées ainsi que du degré d'hétérogénéité qui est associé aux données. 
+Ces modèles permettent d'exprimer l'effet statistique des paramètres du stimulus sur la dynamique de la détection en termes de fonction de risque et permettent de quantifier de manière conditionnelle les probabilités d'occurence sur le temps de détection de la cible. 
+Cela permet par conséquent de déterminer l'occurence de la détection au moyen d'une approche probabiliste dynamique et de considérer de manière plus spécifique l'influence des paramètres de la cible et du masqueur dans le MI dans la dynamique de la construction de la perception auditive consciente. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage\null\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

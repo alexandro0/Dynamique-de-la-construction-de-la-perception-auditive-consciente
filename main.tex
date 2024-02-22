@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt, a4paper, french, singlespacing, headsepline, reqno]{
+MastersDoctoralThesis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{header}
+
+\begin{document}
+
+\frontmatter
+
+\pagestyle{plain}
+
+\includepdf[pages=-,pagecommand={}]{pages_liminaires.pdf}
+% \input{Accessoires/titre}
+% \input{Accessoires/affidavit}
+% \input{Accessoires/publications}
+% \input{Accessoires/resume}
+% \input{Accessoires/abstract}
+% \input{Accessoires/remercie}
+
+\tableofcontents 
+
+\mainmatter 
+
+\input{Accessoires/introduction.tex}
+
+\pagestyle{thesis} 
+
+\part{Contexte théorique et scientifique}
+\include{Chapitres/Chapter1}
+\include{Chapitres/Chapter2}
+
+\part{Contribution expérimentale}
+\include{Chapitres/Chapter3}
+\include{Chapitres/Chapter4}
+\include{Chapitres/Chapter5}
+
+\part{Discussion générale, limites et perspectives}
+\include{Chapitres/Chapter6}
+\include{Chapitres/Chapter7}
+
+\addcontentsline{toc}{chapter}{Bibliographie}
+\footnotesize
+\bibliographystyle{apa}
+\bibliography{refs}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Liste des figures}
+\listoftables
+\addcontentsline{toc}{chapter}{Liste des tableaux}
+
+
+% \input{Appendices/AppendixA.tex}
+
+\end{document}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,742 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Méthodes de caractérisation de la dynamique cérébrale associée à la conscience}
+\label{chapitre2}
+\noindent \hrulefill \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Les modèles de la conscience précédemment définis s'ancrent sur des théories issues des neurosciences et sur des outils de neuroimagerie pour permettre l'étude du substrat neuronal et de ses dynamiques en lien avec les états et les contenus de conscience \citep{aru2012distilling, dehaene2011experimental, khamassi2021neurosciences, kleiner2020mathematical, sattin2021theoretical, tagliazucchi2013sleep, taylor2011review, yaron2021consciousness}. 
+Un nombre de plus en plus important d'études suggère que de multiples biomarqueurs de l'activité cérébrale extraits de la neuroimagerie fonctionnelle peuvent indexer les états de conscience dans le cerveau humain \citep{curley2018characterization, engemann2018robust, engemann2020combining, king2014characterizingthesis, liang2015eeg, sitt2014large}. 
+La recherche sur ces signatures neuronales de la conscience a été précédemment divisée entre les études de l'état de conscience \citep{barttfeld2015signature, demertzi2019human} et du contenu de conscience \citep{schurger2015cortical, webb2016cortical}, avec relativement peu de chevauchement entre ces deux traditions (voir toutefois \cite{aru2019coupling}). 
+
+Cependant, malgré cet ensemble important de travaux, il n'existe pas de consensus scientifique sur les mécanismes neuronaux propres à la prise de conscience et à sa construction dans le temps. 
+L'un des défis majeurs actuels consiste à pouvoir diagnostiquer un accès conscient sur la base de l'activité cérébrale d'un individu en étudiant la contruction de cet accès sur le temps \citep{khamassi2021neurosciences}. 
+Dans le domaine clinique, cela est particulièrement critique comme il est nécessaire de «connaître» les états de conscience des patients. 
+En clinique, l'idée générale d'un biomarqueur est une observation biologique ou physiologique qui indique ou prédit quelque chose de cliniquement pertinent. 
+En transposant littéralement, dans le milieu aéronautique, on considérerait un biomarqueur pertinent comme une observation physiologique qui indiquerait ou prédirait des évènements écologiquement pertinents. 
+En ce sens, caractériser l'accès conscient dans le domaine aéronautique est tout aussi important puisque cela pourrait permettre à terme le développement de technologies neuroadaptatives visant à éviter la survenue de failles critiques dans la sécurité aérienne \citep{dehais2010perseveration, dehais2014failure, dehais2017eeg, dehais2019inattentional, scannella2013effects, scannella2018auditory}.
+
+Des biomarqueurs peuvent être obtenus au moyen de l'utilisation d'algorithmes de mesures des propriétés statistiques du signal. 
+De tels algorithmes ont largement été utilisés avec fiabilité pour l'obtention de biomarqueurs dans l'analyse des signaux EEG en clinique pendant l'anesthésie \citep{engemann2018robust, engemann2020combining, liang2015eeg, sitt2014large}, pour la classification des signaux EEG de patients épileptiques \citep{amarantidis2019interpretation, giannakakis2013approach, helakari2019spectral, hornero1999estimating, hornero2003use, kannathal2005entropies, mirzaei2010eeg, uriguen2017comparison, yuan2011epileptic}, pour ceux de patients atteints de la maladie d'Alzheimer \citep{abasolo2008approximate, escudero2006analysis, pezard1998entropy, shumbayawonda2020complexity}, ou encore pour ceux de patients atteints de schizophrénie \citep{krishnan2020schizophrenia, sabeti2009entropy}. 
+
+Les caractéristiques basées sur des propriétés statistiques du signal cérébral ont donc été utiles pour le diagnostic clinique et l'indication d'évènements physiologiques cliniquement pertinents. 
+Les signaux EEG, en fournissant de l'information sur la dynamique cérébrale, ont permis de donner une caractérisation des processus cognitifs et des mécanismes associés aux traitements conscients. 
+Les propriétés intrinsèques des signaux neuronaux sont ainsi d'un intérêt fondamental car elles permettent de mieux caractériser la dynamique neuronale associée notamment aux états de conscience. 
+
+Pour étudier les mécanismes neuronaux associés à la construction d'un percept conscient, il est nécessaire de considérer les différents outils d'analyse et les différentes hypothèses sous-jacentes qui en découlent. 
+D'un coté, la théorie mathématique de la communication, appelée théorie de l'information (TI) et la théorie plus récente de l'information intégrée de la conscience (TII) représentent des supports pertinents pour ce type d'étude. 
+D'un autre coté, l'électroencéphalographie (EEG) est un outil de neuroimagerie fonctionnelle enregistrant un signal neuronal représentatif de l'échelle macroscopique dont la forme d'onde contient des informations utiles sur l'état cérébral. 
+De cette manière, nous avons orienté notre recherche vers des marqueurs du signal EEG qui pourraient potentiellement permettre le suivi de la perception auditive consciente. 
+Nous avons donc choisi de nous limiter à des indicateurs du signal EEG en lien avec i) la théorie de l'information et ii) la théorie de l'information intégrée de la conscience. 
+
+Une première approche a été mise en œuvre dans la caractérisation de la dynamique cérébrale associée aux différents états de conscience. 
+Elle est basée sur une caractérisation directe du signal au moyen d'outils de mesures des caractéristiques statistiques des signaux EEG. 
+Elle a été utilisée par exemple pour la caractérisation des états de conscience associés à l'anesthésie ou encore au coma. 
+Les mesures principalement utilisées sont des mesures de théorie de l'information et des mesures dérivées de complexité associées au signal EEG. 
+Nous présenterons ces indicateurs dans un premier temps. 
+
+Une seconde approche, vise à caractériser la conscience sur la base de l'utilisation de mesures théoriques de l'état de conscience issues des théories de la conscience développées précédemment. 
+Nous décrirons plus en détail la théorie de l'information intégrée, qui étant intrinsèquement basée sur la théorie de l'information, nous a semblé être la plus adéquate et pertinente à tester dans le cadre de cette thèse. 
+Les indicateurs qui en sont issus seront présentés dans un second temps.
+Nous donnerons pour chaque indice les principales applications à la caractérisation de la dynamique cérébrale associée aux états de conscience. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Théorie de l'information et mesures associées}
+\label{theorieinformationmesuresassociees}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Théorie de l'information}
+\label{theoriedelinformation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La théorie de l'information (TI) est une théorie mathématique de la communication développée par Claude Shannon en 1948. 
+Un fondement de la TI est que l'information peut être traitée comme une quantité physique mesurable et quantifiable, telle que la masse ou l'énergie. 
+Dans la TI, les variables sont décrites par leur caractère aléatoire et l'information est considérée comme non aléatoire \citep{shannon1948}. 
+Dans le domaine des neurosciences, la TI a été essentiellement utilisée comme support théorique formel à l'étude du codage neuronal et de la transmission d'information associée à ce codage.  
+Les premiers travaux remontant notamment à Attneave en 1954 qui traitaient de la perception dans le système visuel \citep{attneave1954some, blanc2012transmission}. 
+C'est plus tard qu'elle eu du succès lorsque le problème d'une «extraction efficace de l'information» des séquences d'activités neuronales évoquées par des stimuli a émergé \citep{atick1992could, barlow1961possible, borst1999information}. 
+Dans cette section, nous présentons la plupart des définitions de base nécessaires à la TI. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mesures de la théorie de l'information}
+\label{mesuresinformation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Entropie}
+\label{entropie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On introduit premièrement le concept d'entropie, qui est une mesure de l'incertitude d'une variable aléatoire (VA). 
+Soit $X$ une VA discrète (VAD) avec l'alphabet $\chi$ et une fonction de masse de probabilité $p(x)=Pr(X=x)$, $x \in \chi$. 
+La fonction de masse de probabilité est désignée par $p(x)$ plutôt que $p_X(x)$, par commodité \citep{cover2006}. 
+Ainsi, $p(x)$ et $p(y)$ font référence à deux VAD différentes et sont en fait des fonctions de masse de probabilités différentes, $p_X(x)$ et $p_Y(y)$, respectivement. 
+L'entropie $H(X)$ d'une VAD $X$ est donc une mesure de l'incertitude contenue dans cette VA et mesure la quantité d'information requise en moyenne pour décrire la VA. 
+Elle est définie comme :
+
+\begin{equation}
+H(X) = - \sum_{x \in \chi}{p(x) \log p(x)}
+\end{equation}
+
+Comme $0 \leq p(x) \leq 1$ implique que $\log \frac{1}{p(x)} \geq 0$ alors $H(X) \geq 0$. 
+En utilisant le logarithme en base 2, l'entropie est mesurée en bits et elle représente ainsi le nombre de bits en moyenne requis pour décrire (\textit{i.e.}, coder) la VA. 
+Si la base du logarithme est b, l'entropie est désignée par $H_b(X)$. 
+Si la base du logarithme est e, l'entropie est mesurée en nats. 
+L'ajout de termes de probabilité nulle ne modifie pas l'entropie. 
+L'entropie est une fonction de la distribution de $X$ et ne dépend pas des valeurs réelles prises par la VA $X$, mais seulement des probabilités. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Entropie jointe}
+\label{jointen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On définit ensuite l'entropie jointe $H(X,Y)$ d'une paire de VAD $(X,Y)$ avec une distribution de probabilité jointe $p(x,y)$. 
+L'entropie jointe est une mesure de la quantité d'information moyenne (en termes d'incertitude) au sens de Shannon contenue dans cette paire. 
+Elle est définie comme :
+
+\begin{equation}
+H(X,Y) = - \sum_{x \in \chi} \sum_{y \in \Upsilon} {p(x,y) \log p(x,y)}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Entropie conditionnelle}
+\label{conden}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie conditionnelle d'une VA sachant une autre est l'espérance des entropies des distributions conditionnelles, moyennée sur la VA conditionnante. 
+Ainsi, l'entropie conditionnelle $H(X|Y)$ est l'entropie d'une VA $X$ conditionnellement à la connaissance d'une autre VA $Y$. 
+Si $(X,Y)$ ayant comme distribution de probabilité jointe $p(x,y)$, l'entropie conditionnelle $H(Y|X)$ est définie comme :
+
+\begin{align}
+H(Y|X) & = - \sum_{x \in \chi}{p(x)} \sum_{y \in \Upsilon} {p(y|x) \log p(y|x)} \\
+& = - \sum_{x \in \chi} \sum_{y \in \Upsilon} {p(x,y) \log p(y|x)}
+\end{align}
+
+La règle de la chaîne exprime le caractère naturel de la relation entre entropie jointe et entropie conditionnelle comme l'entropie d'une paire de VA est l'entropie de l'une plus l'entropie conditionnelle de l'autre \citep{cover2006} :
+
+\begin{equation}
+H(X,Y) = H(X) + H(Y|X)
+\end{equation}
+
+On notera que $H(Y|X) \neq H(X|Y)$ mais que $H(X)-H(X|Y)=H(Y)-H(Y|X)$. 
+Enfin, pour trois VA, le corollaire correspond à :
+\begin{equation}
+H(X,Y|Z) = H(X|Z) + H(Y|X,Z)
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Entropie relative}
+\label{dkl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie relative est une mesure de dissimilarité (\textit{i.e.}, divergence) entre deux distributions de probabilités $p(x)$ et $q(x)$. 
+L'entropie relative, également appelée Distance de Kullback-Leibler $D_{KL}(p||q)$ est une mesure de l'inefficacité de l'hypothèse selon laquelle la distribution est $q$ lorsque la vraie distribution est $p$ \citep{cover2006}. 
+Elle apparaît ainsi comme l'espérance du logarithme du rapport de vraisemblance entre les deux distributions. 
+L'entropie relative $D_{KL}$ entre deux fonctions de masses de probabilité $p(x)$ et $q(x)$ d'une VAD $X$ est définie comme:
+
+\begin{equation}
+D_{KL}(p||q) =  \sum_{x \in \chi} p(x) \log \frac{p(x)}{q(x)}
+\end{equation}
+
+De cette manière, s'il existe $x \in \chi$ tel que $p(x) > 0$ et $q(x)=0$ alors $D_{KL}(p||q)=\infty$ et $D(p||q) = 0$ si et seulement si $p(x) = q(x)$, pour tout $x \in \chi$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Information mutuelle}
+\label{infomut}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'information mutuelle (IM) est une mesure de la dépendance statistique entre deux VA \citep{cover2006, latham2009mutual}, et représente ainsi une mesure de la quantité d'information qu'une VA contient sur une autre VA. 
+Elle représente la réduction de l'incertitude d'une VA due à la connaissance de l'autre et est définie en termes de différences d'entropie (Figure \ref{fig:chap3diagvenninfomut}). 
+Elle ne fait aucune hypothèse sur la distribution des variables, ni sur la nature de la relation entre elles et est sensible aux effets non linéaires et non monotones (Figure \ref{fig:chap3infomutlinearnonlinear}). 
+Deux propriétés essentielles de l'information mutuelle sont qu'elle est symmétrique et additive pour des VA indépendantes\footnote{Deux événements $A$ et $B$ sont dits indépendants si $P(A \cap B)=P(A)P(B)$.}. 
+L'information mutuelle $IM(X;Y)$ entre deux VAD $X$ et $Y$ de fonction de masse de probabilités jointes $p(x,y)$ et de fonctions de masse de probabilités marginales respectives $p(x)$ et $p(y)$ est définie comme l'entropie relative entre la distribution de probabilité jointe $p(x,y)$ et le produit des distributions marginales $p(x)p(y)$ :
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=\linewidth]{illustrations/utilisé/diagramme_venn.pdf}
+\caption[Diagrammes de Venn pour les mesures théoriques d'information]{Diagrammes de Venn pour les mesures théoriques d'information. (Gauche) Pour représenter l'entropie jointe $H(X,Y)$, l'aire de chaque section peut également être utilisée pour représenter $H(X) + H(Y) \geq H(X,Y) \geq H(X), H(Y) \geq 0$ et, par conséquent, les valeurs $H(X|Y)$, $H(Y|X)$ et $IM(X;Y)$ correspondent à l'aire de chaque section. (Droite) Si l'on considère l'entropie de trois variables, l'information mutuelle multivariée $IM(X;Y;Z)$ ne peut pas être représentée avec précision à l'aide d'une zone puisque, telle que représentée par les hachures, elle n'est pas non négative. Adapté de \cite{finn2020generalised}.}
+\label{fig:chap3diagvenninfomut}
+\end{figure*}
+
+\begin{align}
+IM(X;Y) &= \sum_{x \in \chi} \sum_{y \in \Upsilon} p(x,y) \log \frac{p(x,y)}{p(x)p(y)} \\
+&= D_{KL}[p(x,y)||p(x)p(y)]
+\end{align}
+avec $IM(X;Y) = D_{KL}[p(x, y)||p(x)p(y)] = 0$ si et seulement si $p(x,y) = p(x)p(y)$, c'est-à-dire si X et Y sont indépendantes. 
+Les notations suivantes sont également souvent utilisées :
+
+\begin{align}
+IM(X;Y) &= H(X) - H(X|Y ) \\
+&= H(Y) - H(Y|X) \\
+&= H (X) + H (Y) - H (X,Y)
+\end{align}
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=\linewidth]{illustrations/utilisé/info_mut_linear_nonlinear.jpg}
+\caption[Corrélation et information mutuelle pour échantillons d'une distribution bivariée]{Illustrations représentative d'échantillons tirés d'une distribution bivariée dont le cœfficient de corrélation est en orange (à gauche) et l'information mutuelle en violet (à droite) estimée à 16 bins pour 100000 échantillons. Les images du haut montrent une relation linéaire détectable à la fois par la corrélation et l'information mutuelle tandis que les images du bas montrent une série de distributions pour lesquelles la corrélation est nulle mais présentant une relation non-linéaire caractérisable au moyen de l'IM. Adapté de \cite{ince2017statistical}.}
+\label{fig:chap3infomutlinearnonlinear}
+\end{figure*}
+
+Cela fait maintenant plusieurs décennies que l'information mutuelle est un indicateur utilisé en neurosciences pour caractériser le transfert d'information entre différentes zones cérébrales. 
+L'information mutuelle a précédemment été utilisée pour quantifier la structure de dépendance non-linéaire associée à la dynamique cérébrale issue de signaux EEG dans des études sur les états de conscience sous anesthésie \citep{afshani2019frontal, huang2003prediction, julitta2011auto, liang2013permutation, liang2015tracking, liang2016comparison, melia2014auto}. 
+L'information mutuelle a aussi été utilisée pour quantifier la structure associée à la dynamique cérébrale EEG pour des patients atteints de la maladie d'Alzeihmer \citep{abasolo2008approximate, jeong2001mutual}, de schizophrénie \citep{na2002eeg}, de troubles des états du sommeil \citep{melia2015mutual}, de troubles d'états dépressifs \citep{sun2018mutual}, ou encore de sclérose en plaques \citep{lenne2013decrease}. 
+
+Dans le cadre du développement des interfaces homme-machine, une étude a proposé une méthodologie d'utilisation pour un décodage des patterns d'activités cérébrales en utilisant l'information mutuelle entre des modèles spatio-temporels des signaux EEG et les activités neuronales correspondantes chez le sujet humain \citep{ang2012mutual}. 
+Dans une étude récente, \cite{bourdillon2020brain} ont estimé la connectivité cérébrale dans une série d'expériences EEG de surface et intracrâniens (iEEG) en utilisant deux méthodes : l'information mutuelle et la valeur de synchronisation de phase (mesure classiquement utilisée pour évaluer la connectivité fonctionnelle à l'échelle cérébrale).  
+% Dans les deux premières expériences, l'EEG intracrânien a été enregistré pendant quatre états distincts chez les sujets : l'éveil conscient, le sommeil à mouvements oculaires rapides, les périodes stables de sommeil lent et l'anesthésie provoquée par agent pharmacologique. 
+% Les résultats ont montré que la connectivité fonctionnelle dans la bande de fréquence delta-thêta permettait de distinguer spécifiquement l'éveil conscient et le sommeil à mouvements oculaires rapides des deux autres conditions d'enregistrements. 
+% Dans une troisième expérience, les auteurs ont généralisé ces résultats sur une plus grande cohorte de patients souffrant de lésions cérébrales. 
+% La connectivité fonctionnelle dans la même bande fréquence du signal cérébral était ainsi significativement plus élevée chez les patients se trouvant dans un état de conscience minimale que chez ceux se trouvant dans un état végétatif (ou syndrome d'éveil sans réponse). 
+Les résultats ont montré que la connectivité fonctionnelle de l'activité corticale dans une bande de fréquence delta-thêta, évaluée au moyen de l'information mutuelle, est une signature robuste des états conscients. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Entropie de transfert}
+\label{transfen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie de transfert (TE) est une extension de l'information mutuelle et mesure le transfert d'information dirigé entre les séries temporelles d'une source et d'une cible. 
+Elle permet donc de quantifier les interactions orientées dans un système dynamique. 
+L'information mutuelle est une mesure symétrique, et de fait, n'est pas adaptée pour caractériser des interactions asymétriques ou dirigées. 
+L'information mutuelle décalée dans le temps $IM(X_t:Y_{t-\tau})$ a été utilisée comme une mesure, asymétrique dans le temps, du transfert d'information de $Y$ à $X$. 
+Dans ce cas, $X$ et $Y$ sont tous deux des processus aléatoires, $\tau$ est une période de décalage et $t$ est un temps donné. 
+Cependant, l'information mutuelle décalée dans le temps n'est pas satisfaisante car elle ne tient pas compte de l'histoire commune entre les processus $X$ et $Y$ \citep{kaiser2002information, ikegwu2020pyif}. 
+L'entropie de transfert considère ainsi l'histoire partagée entre les deux processus par le biais d'une information mutuelle conditionnelle (Figure \ref{fig:chap2causaliteentropietransfer}). 
+Plus précisément, TE conditionne le passé de $X_t$ pour supprimer toute information redondante ou partagée entre $X_t$ et son passé. 
+Cela permet également de supprimer toute information dans le processus $Y$ sachant $X$ au moment $t$ qui se retrouve dans le passé de $X$ \citep{williams2011generalized, ikegwu2020pyif}. 
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=0.8\linewidth]{illustrations/utilisé/diagramme_causalité_entropie_transfert.jpg}
+\caption[Diagramme de causalité temporelle et entropie de transfert]{Diagramme de causalité temporelle et entropie de transfert. (Gauche) Définition de la causalité temporelle par des dépendances statistiques en supposant des décalages temporels entre deux signaux. Dans cette définition, il y a un fenêtrage temporel $t - \Delta \tau$ dans les deux signaux qui causent les variations de $y(\Delta t)$. (Droite) Diagramme de Venn montrant la relation entre chaque variable et leur intersection. Dans le cas d'une éventuelle causalité temporelle, la mesure de l'entropie de transfert est l'une des plus utilisées dans la littérature. Adapté de \cite{faber2020critical}.}
+\label{fig:chap2causaliteentropietransfer}
+\end{figure*}
+
+D'une part, l'entropie de transfert permet de quantifier la cohérence statistique entre des systèmes évoluant dans le temps. 
+D'autre part, elle permet d'exclure des influences d'information partagée due à une histoire commune dans les signaux par un conditionnement approprié des distributions de probabilités. 
+L'entropie de transfert quantifie donc la réduction de l'incertitude sur $X_t$ à partir de la connaissance de $Y_{t-\tau}$ après avoir considéré la réduction de l'incertitude sur $X_t$ à partir de la connaissance de $X_{t-\tau}$. 
+En plus de tenir compte des informations redondantes du passé, le conditionnement sur le passé de la variable cible permet à l'entropie de transfert d'inclure des informations complémentaires de la source et du passé de la cible. 
+Conçue pour détecter la causalité, elle ne suppose par principe aucun modèle particulier d'interaction entre les deux systèmes d'intérêt (\textit{i.e.}, aucune hypothèse à priori sur les distributions). 
+Par conséquent, sa sensibilité à toutes les corrélations d'ordre supérieur devient un avantage pour les analyses exploratoires par rapport à d'autres approches basées sur un modèle. 
+Cela est particulièrement pertinent lorsque la détection de certaines interactions non-linéaires inconnues est requise. 
+
+Les capacités de l'entropie de transfert à détecter des interactions purement non-linéaires et à faire face à une gamme de délais d'interaction sont d'un intérêt particulier pour l'étude des états de conscience \citep{vicente2011transfer, king2014characterizingthesis}. 
+L'entropie de transfert de paires d'électrodes permet de mieux comprendre la cohérence statistique entre les zones corticales dans le contexte de l'analyse de séries temporelles d'activités EEG. 
+L'utilisation des entropies de transfert a révélé une perte de la connectivité de rétroaction corticale comme mécanisme clé de l'inconscience induite par l'anesthésie \citep{ranft2016neural}. 
+L'entropie de transfert a également été étudiée dans un contexte de la fatigue en automobile \citep{huang2015identifying}. 
+Les auteurs ont trouvé que l'entropie de transfert présentait une augmentation du couplage d'information entre les électrodes pour des niveaux de vigilance intermédiaires. 
+Récemment, \cite{gao2018relative} l'ont utilisée pour améliorer leur pipeline de classification afin de discriminer différents états de fatigue des sujets dans des tâches de conduite. 
+L'entropie de transfert a aussi été utilisée dans les domaines d'interfaces homme-machine. 
+\cite{baig2019connectivity} ont appliqué des mesures de classification pour discriminer le niveau d'expertise lors de la manipulation et de la modélisation d'objets. 
+Ils ont montré que le transfert d'information était en constante augmentation pour les novices par rapport aux experts, permettant une distinction experts/novices avec une précision de 90 \% sur la base de l'entropie de transfert. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mesures d'entropie et de complexité du signal}
+\label{mesurescomplexitesignal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Afin de comprendre la nature de la dynamique cérébrale et de développer de nouvelles méthodes de monitoring et/ou de diagnostic, un certain nombre de mesures de complexité issues de la TI, de la théorie du chaos et de la théorie des fractales aléatoires\footnote{La théorie du chaos s'intéresse principalement aux comportements apparemment irréguliers dans un système complexe qui sont générés par des interactions déterministes non-linéaires avec seulement quelques degrés de liberté, où le bruit ou le caractère aléatoire intrinsèque ne joue pas un rôle important. La théorie des fractales aléatoires étudie la structure de similarité statistique présente au sein d'un signal temporel. Elle est issue des analyses géométriques fractales. La théorie des fractales aléatoires et la théorie de l'information supposent toutes deux que la dynamique du système est intrinsèquement aléatoire.} ont été appliquées pour analyser les données EEG. 
+De nombreuses études cliniques ont cherché à quantifier de telles propriétés issues des signaux de l'activité cérébrale \citep{gao2011complexity, kannathal2005entropies, lenne2013decrease, pezard1996depression, pezard1998entropy, pezard2001investigation, pritchard1992brain, pritchard1994eeg, torres2000relative}. 
+Dans ce qui suit, nous présentons plusieurs de ces mesures sur la base de trois catégories, précisant le type de caractérisation de complexité du signal sous-jacent : i) les entropies, ii) les corrélations long-terme et iii) les dimensions fractales. 
+Dans ces catégories, les mesures sont présentées selon une description qualitative en lien avec plusieurs études les ayant utilisées dans le cadre de la caractérisation de la conscience via des techniques de neuroimagerie. 
+Les algorithmes de calcul de ces différentes mesures seront abordés en détails dans la Section \ref{contenuinformationnel}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Mesures d'entropie}
+\label{mesuresdentropie}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Entropie spectrale\\}
+\label{spen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie spectrale est une mesure de complexité caractérisant l'irrégularité d'une série temporelle d'un système \citep{inouye1991quantification}. 
+Elle est définie comme l'entropie de Shannon de la distribution de puissance normalisée du signal. 
+En quantifiant la fonction de densité de probabilité du spectre de puissance du signal dans le domaine fréquentiel, l'entropie spectrale décrit le degré d’asymétrie dans la distribution des fréquences. 
+Une entropie spectrale élevée signifie que le spectre tend à être plat et régulier, comme celui du bruit banc\footnote{Un bruit blanc est un bruit dans lequel les échantillons temporels ne présentent aucune corrélation statistique.}. 
+Une entropie spectrale faible signifie que l'énergie du signal se concentre dans quelques bins fréquentiels, comme pour des signaux moins complexes ou en fréquences spécifiques tels que les sinusoïdes. 
+Ainsi, l'entropie spectrale d'une onde sinusoïdale pure est de 0, tandis que celle du bruit blanc est de 1. 
+De cette manière, l'entropie spectrale peut quantifier certains patterns spectraux qui apparaissent usuellement dans des signaux réguliers et irréguliers. 
+
+En clinique, l'entropie spectrale a principalement été utilisée dans les études sur l'épilepsie \citep{helakari2019spectral, kannathal2005entropies, mirzaei2010eeg, uriguen2017comparison} et pour le monitoring de la profondeur de l'état anesthésique de patients en situation d'anesthésie générale \citep{chhabra2016spectral, ellerkmann2004spectral, jantti2004spectral, klockars2012spectral, liang2015eeg, maksimow2006increase, seitsonen2005eeg, vakkuri2004time, vanluchene2004spectral}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Entropie approximée\\}
+\label{apen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie approximée est une métrique utilisée pour mesurer la quantité de régularité et de prévisibilité/prédictibilité des fluctuations des données d'un signal temporel \citep{pincus1991regularity, pincus1991approximate}. 
+La présence de schémas de fluctuation répétitifs dans un signal temporel le rend plus prévisible qu'un signal dans lequel de tels schémas sont absents. 
+L'entropie approximée reflète la probabilité que des schémas d'observations similaires ne soient pas suivis par d'autres observations similaires \citep{ho1997predicting}. 
+Un signal contenant de nombreux motifs répétitifs présente une entropie approximée relativement faible tandis qu'un signal moins prévisible possède une entropie approximée plus élevée. 
+
+L'entropie approximée associée aux séries temporelles EEG est utile pour quantifier le degré de régularité et de prévisibilité lié aux fluctuations dans les valeurs du potentiel électrique enregistrées sur les électrodes du scalp. 
+Elle a été précédemment appliquée pour la classification de signaux EEG en lien avec les maladies psychiatriques, telles que la schizophrénie \citep{sabeti2009entropy}, l'épilepsie \citep{giannakakis2013approach, yuan2011epileptic} ou encore avec la toxicomanie \citep{yun2012decreased}. 
+Elle a aussi été utilisée en complément de l'information mutuelle pour discriminer des sujets sains de patients atteints de la maladie d'Alzheimer \citep{abasolo2008approximate}. 
+Elle a également été utilisée dans le cadre de l'étude des signaux EEG de patients durant les états de veille et sommeil \citep{burioka2005approximate} ainsi que lors de l'évaluation des états anesthésiques \citep{benzy2015approximate, bruhn2000approximate, bruhn2003correlation, hudetz2003cholinergic, liang2015eeg}. 
+En outre, elle a été employée dans la caractérisation de l'analyse non-linéaire du signal EEG lors d'états mentaux différents tels que l'état stable de repos, l'écoute musicale et pendant la stimulation réflexe \citep{natarajan2004nonlinear}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Entropie échantillonnée\\}
+\label{saen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Le désavantage de l’entropie approximée est le biais introduit dans la valeur calculée par la prise en compte de l’autosimilarité (\textit{i.e.}, les auto-correspondances) dans le signal et de la longueur finie de la séquence analysée. 
+L'entropie échantillonnée est une modification de l’entropie approximée pour éliminer le biais et est utilisée pour évaluer la complexité des signaux temporels \citep{richman2000physiological}. 
+L'entropie échantillonnée a donc deux avantages sur l’entropie approximée : l'indépendance à la longueur des données et l'implémentation libre de biais. 
+
+L'entropie échantillonnée a été utilisée comme caractéristique d'une approche basée sur la complexité dans la détection de l'activation cérébrale pour des signaux BOLD issus de l'IRMf \citep{zhang2016exploiting}. 
+En clinique, elle a été employée pour caractériser le degré de profondeur de l'état anesthésique \citep{liang2015eeg} et de son lien avec la dose d'anesthésiant administré \citep{ferenets2007behavior} ou encore pour caractériser le degré de complexité non-linéaire associé aux signaux d'IRMf chez des patients schizophrènes \citep{sokunbi2014nonlinear}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Entropie de permutation\\}
+\label{peen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie de permutation quantifie la complexité d'un système dynamique en capturant les relations d'ordre entre les valeurs du signal et en extrayant une distribution de probabilité des patterns ordinaux \citep{bandt2002permutation}. 
+Similairement à l'entropie approximée, elle consiste en une mesure de l'irrégularité du signal basée sur une comparaison de l'ordre des valeurs voisines du signal. 
+Elle est non paramétrique et exempte des hypothèses restrictives des modèles paramétriques. 
+Elle est robuste au bruit, efficace en terme de calcul, flexible et invariante aux transformations monotones non-linéaires des données. 
+Elle s'appuie sur les notions d'entropie et de dynamique symbolique et tient compte de la structure d'ordonnancement temporel (\textit{i.e.}, de causalité temporelle) d'une série temporelle à valeurs réelles. 
+Elle est une méthode efficace pour comparer les séries temporelles et distinguer différents types de comportements (\textit{i.e.}, périodiques, chaotiques ou aléatoires) dans le signal. 
+Les avantages de cette méthode sont : i) l'identification de patterns non-linéaires dans le signal; ii) la réduction de l'espace du problème en un ensemble limité de symboles discrets; et iii) sa robustesse en regard du bruit de mesure. 
+Cette mesure peut être utilisée pour analyser des séries temporelles générées par des systèmes de grande dimension avec une faible stationnarité\footnote{La stationnarité d'un signal temporel correspond à une invariance de ses paramètres d'ordre statistiques au cours du temps comme la moyenne et la variance.}. 
+L'entropie de permutation est une mesure de complexité appropriée pour les séries temporelles issus de systèmes dynamiques chaotiques en particulier en présence de bruit. 
+
+L'entropie de permutation a précédemment été utilisée pour évaluer la complexité statistique et détecter les variations temporelles dynamiques de signaux EEG \citep{li2008using}. 
+Elle a été utilisée dans la classification des stades de sommeil à partir de l'évaluation de signaux EEG \citep{bandt2017new}, dans l'analyse de la complexité des signaux EEG issus de patients Alzheimer \citep{morabito2012multivariate}, ainsi que dans la mesure de la variation du signal EEG chez des patients épileptiques \citep{li2007predictability, li2014using, zhu2013epileptogenic}. 
+Elle a aussi été utilisée pour discriminer efficacement différents niveaux de conscience pendant l'anesthésie \citep{jordan2008electroencephalographic, li2008using, li2010multiscale, li2013parameter, liang2015eeg, olofsen2008permutation}. 
+De manière importante, \cite{sitt2014large} ont montré que les entropies de permutation mesurées dans les gammes de fréquences $\theta$ et $\alpha$ sont un paramètre efficace pour discriminer l'état végétatif des sujets. 
+De plus grandes valeurs d'entropie de permutation, en particulier sur les régions centro-postérieures ont indiqué une distribution plus complexe et imprévisible et ont permis l'indexation d'états de conscience. 
+En soi, l'entropie de permutation est conceptuellement simple, structurellement robuste aux bruits et artefacts, très rapide en temps de calcul, ce qui en fait une mesure très pertinente pour les technologies de neuroimagerie portables. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Entropie de décomposition en valeurs singulières\\}
+\label{sven}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'entropie de décomposition en valeurs singulières \citep{varshavsky2006novel, banerjee2014feature} est une mesure visant à quantifier la dimension des données d'un signal temporel. 
+Elle est un indicateur du nombre de vecteurs propres nécessaires pour une explication adéquate des données associées au signal. 
+L'entropie de décomposition en valeurs singulières a été utilisée comme mesure de complexité pour l'analyse de données EEG issues de patients épileptiques \citep{colominas2017time, greene2008comparison, prabhakar2015performance, satapathy2017eeg} ainsi que pour la détection de crises épileptiques \citep{dhanka2020comparative, wu2020detecting}. 
+Elle a également été employée en clinique afin d'améliorer au diagnostic de patients atteints de schizophrénie \citep{krishnan2020schizophrenia}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Mesures de complexité}
+\label{mesurescomplexite}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Exposant de Hurst\\}
+\label{hurst}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'exposant de Hurst $H$ est une mesure statistique utilisée pour caractériser les corrélations à long-terme d'un signal temporel \citep{hurst1951long}. 
+Il permet de quantifier et de classifier les séries temporelles en fonction de leur degré de dépendance à long-terme et est usuellement appelé «indice de dépendance statistique à long-terme». 
+Il est robuste, comporte peu d'hypothèses sur le processus sous-jacent générateur de la série temporelle et présente une large applicabilité pour l'analyse des séries temporelles. 
+Il mesure les auto-corrélations de la série temporelle et la vitesse à laquelle celles-ci diminuent au fur et à mesure que le décalage entre les différentes paires de valeurs augmente. 
+De cette manière, $H$ quantifie la tendance statistique relative d'une série temporelle à régresser fortement vers la moyenne ou à se regrouper dans une direction. 
+Il représente un exposant de mise à l'échelle d'une série temporelle et ses valeurs sont comprises entre 0 et 1. 
+Sur la base de cette valeur, les séries temporelles peuvent être classées en trois catégories : 
+$H=0,5$ indique une série temporelle aléatoire, c'est-à-dire complètement non-corrélée (\textit{i.e.}, bruit blanc, mouvement brownien) ; 
+$0<H<0,5$ indique une série anti-persistante, c'est-à-dire une série temporelle présentant une caractéristique de «retour à la moyenne» (une valeur à la hausse est plus susceptible d'être suivie d'une valeur à la baisse et inversement et la force de cette dépendance ou de «retour à la moyenne» augmente à mesure que $H$ se rapproche de 0) ; 
+enfin, $0,5<H<1$ indique une série persistante, c'est-à-dire une série temporelle présentant une auto-corrélation positive long-terme, (une valeur élevée de la série sera probablement suivie d'une autre valeur élevée et la force de cette tendance long-terme augmente à mesure que $H$ se rapproche de 1).
+
+En clinique, l'exposant de Hurst a été utilisé pour la surveillance de la profondeur de l'état anesthésique \citep{hosseini2018computational, lalitha2007automated, liang2012multiscale, liang2015eeg, natarajan2004nonlinear, nguyen2014monitoring, subha2010eeg}. 
+Il a aussi été utilisé dans la caractérisation de la dynamique non-linéaire du signal EEG lors de différents états mentaux tels que l'état stable au repos et l'écoute musicale \citep{natarajan2004nonlinear}.
+Enfin, il a été utilisé pour caractériser le degré de complexité non-linéaire associé aux signaux d'IRMf chez des patients schizophrènes \citep{sokunbi2014nonlinear} ainsi que pour l'évaluation de signaux issus de patients épileptiques \citep{kannathal2005characterization}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Exposant fractal\\}
+\label{alpha}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+L'analyse des fluctuations avec suppression des tendances (DFA, pour «Detrended Fluctuation Analysis») a initialement été proposée par \cite{peng1993long}. 
+Elle est une méthode pour déterminer le degré d'auto-similarité statistique d'un signal temporel et permet par cela, comme l'exposant de Hurst, d'en caractériser les corrélations à long-terme à travers un exposant fractal $\alpha$.
+L'exposant $\alpha$ mesure ainsi la corrélation temporelle à long-terme présente dans la série temporelle et permet la découverte de signatures de bruit en 1/f (\textit{i.e.}, bruit fractal\footnote{Contrairement au bruit blanc dans lequel toutes les fréquences sont représentées avec une amplitude égale, le bruit fractal ou bruit rose, présente un spectre en amplitude variant à raison de $-10$ dB/décades et correspond à une dépendance en $1/f$ en terme de puissance.}) au sein du signal.
+L'exposant $\alpha$ permet dès lors de quantifier la complexité du processus ayant généré la série temporelle au travers de son degré d'auto-similarité statistique. 
+
+Le signal EEG possède des corrélations temporelles à long-terme dans la dynamique des oscillations neuronales \citep{lee2007detrended}. 
+L'analyse de ces corrélations fournit un indice quantitatif des dépendances statistiques dans les oscillations à différentes échelles de temps. 
+Lors du développement de modèles stochastiques\footnote{On parle de processus stochastique lorsque l’évolution d’une variable dans le temps est imprévisible. C’est-à-dire qu’il est impossible, connaissant la position de la variable au
+temps $t$, de prédire avec exactitude sa position au temps $t+\Delta t$. Un processus non stochastique est dit déterminé. C’est–à-dire que l’on peut en rendre compte au moyen d’une fonction du temps $x=f(t)$ capturant l’ensemble de la variance de la série. Un processus stochastique comprend généralement une partie déterministe, auquel s’ajoute une partie stochastique également appelée bruit.} pour les signaux EEG, une tâche importante consiste à déterminer le type de structure de causalité et/ou de corrélation que le modèle doit posséder. 
+
+Les DFA ont été utilisées pour évaluer les corrélations temporelles à long-terme au sein de séries temporelles physiologiques \citep{goldberger2002fractal, goldberger2002physiologic, peng2002quantifying}. 
+Ce type de méthode a ensuite été utilisé dans le cadre spécifique des analyses de données électrophysiologiques et associé à la modulation d'amplitude des oscillations cérébrales recueillies par EEG \citep{hardstone2012detrended}. 
+La présence et la persistance de ces corrélations temporelles à long-terme ont été évaluées en clinique dans les signaux EEG au repos de patients dépressifs et de témoins sains \citep{bachmann2014detrended, lee2007detrended}. 
+\cite{lee2007detrended} ont trouvé que le cerveau affecté de troubles dépressifs majeurs présente une décroissance plus lente des corrélations et que la persistance des corrélations chez ces patients déprimés était associée à une sévérité de la dépression sur la plupart des zones corticales étudiées. 
+\cite{bachmann2014detrended} ont trouvé que l'EEG au repos des sujets sains présentait des corrélations temporelles à long-terme persistantes dans le temps et que, pour la dépression, ces corrélations étaient moins persistantes, voir anti-persistante pour presque la moitié des sujets. 
+En outre, l'exposant de la DFA a aussi été utilisé pour la surveillance de la profondeur de l'état d'anesthésie \citep{gifani2007optimal, hosseini2018computational, jospin2007detrended, li2017monitoring, liang2015eeg, nguyen2010improving, subha2010eeg}, ainsi que pour la caractérisation et la détection des crises épileptiques \citep{adda2016detrended, hosseini2010extracting, mesquita2021detection, shalbaf2009epilepsy}.
+Dans le cadre de la conception et du développement d'interfaces homme-machine, des analyses basées sur la DFA et appliquées sur les signaux EEG ont également été étudiées pour l'extraction de caractéristiques pertinentes du signal \citep{brodu2008multifractal, brodu2012exploring}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Dimension fractale\\}
+\label{fracdim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Une dimension fractale est un rapport fournissant un indice statistique qui compare la façon dont les détails d'un pattern (\textit{i.e.}, un motif fractal) changent avec l'échelle à laquelle il est mesuré. 
+Le terme fractal peut concerner les formes et les objets dans l'espace. 
+Mais, comme vu précédemment, il peut également être utilisable dans le cadre de l'analyse des fluctuations dans le temps qui possèdent une auto-similarité et dont la dimension ne peut pas être décrite par une valeur entière \citep{klonowski2000signal}. 
+Un objet dit «fractal» peut être divisé en copies identiques ou statistiquement similaires et chaque copie peut être faite pour correspondre à l'objet entier par déplacement et étirement \citep{goh2005comparison}. 
+Cet aspect important exprime ainsi la propriété d'invariance d'échelle (ang: «scale-free»). 
+De nombreux phénomènes réels présentent des propriétés et des dimensions fractales qui ont été estimées à l'aide de techniques d'analyse fractale. 
+Ainsi, estimer la dimension fractale d’un ensemble de données revient en général à s’intéresser à ses propriétés de régularité ou à la dépendance à long-terme qu'il contient \citep{le1998methode}.
+Il existe plusieurs types de dimensions fractales (Higuchi, Katz, Petrosian) qui seront détaillés dans la Section \ref{contenuinformationnel}. 
+
+Les signaux temporels EEG correspondant à différentes conditions physiopathologiques peuvent être caractérisées par leur dimension fractale comme mesure de la complexité du signal \citep{accardo1997use}. 
+En clinique, les dimensions fractales de Petrosian \citep{hosseini2018computational} et de Higuchi \citep{anier2010entropy, anier2004higuchi} ont été utilisées pour la surveillance de la profondeur de l'état d'anesthésie. 
+La dimension fractale de Higuchi a aussi été utilisée comme mesure de caractérisation de la complexité des signaux EEG de sujets sains éveillés ou endormis \citep{klonowski2002complexity}. 
+Elle a également été employée pour caractériser la complexité associée au signal EEG au début de crise chez des patients épileptiques \citep{esteller1999fractal} ainsi que pour évaluer les effets du propofol anesthésique sur la complexité du signal EEG issus de phases de sommeil chez le sujet sain \citep{ferenets2006comparison}. 
+De manière intéressante, \cite{spasic2011different} ont étudié l'impact de différents anesthésiants sur la dynamique cérébrale de rats en utilisant la dimension fractale de Higuchi. 
+Les auteurs ont montré que l'inhibition neuronale globale causée par différents mécanismes d'action anesthésique induit un gradient distinct de complexité entre les structures cérébrales, pour lequel la dimension fractale de Higuchi a permis de discriminer la dynamique de la complexité de l'EEG entre structures cérébrales lors de cette induction d'altération de la conscience. 
+Récemment, \cite{de2019fractal} ont évalué la dimension fractale de Higuchi des activations cérébrales évoquées par la technique de stimulation magnétique transcrânienne lors de l'étude des états de conscience. 
+La dimension fractale des activations cérébrales évoquées par cette méthode a permis de caractériser les états d'individus adultes sans exiger qu'ils effectuent de tâches motrices ou cognitives \citep{de2019fractal}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Paramètres de Hjorth\\}
+\label{hjorth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Les paramètres de Hjorth sont des indicateurs des propriétés statistiques d'un signal classiquement utilisés en traitement du signal et introduits par \cite{hjorth1970eeg}. 
+Les trois paramètres sont l'activité, la mobilité et la complexité de Hjorth. 
+L'activité de Hjorth est la variance du signal. 
+La mobilité de Hjorth est une mesure de la fréquence moyenne du signal. 
+La complexité de Hjorth est une mesure des variations fréquentielles au cours d'une période temporelle donnée. 
+Le paramètre d'activité de Hjorth peut également indiquer la surface du spectre de puissance dans le domaine fréquentiel. 
+La valeur du paramètre d'activité retourne une valeur élevée si les composantes fréquentielles hautes dans le signal sont à un nombre élevé et inversément est faible si elles sont en faible nombre. 
+
+Les paramètres de Hjorth sont relativement simples à calculer et de fait sont couramment utilisés en clinique dans l'analyse de signaux EEG \citep{oh2014novel} et d'électrophysiologie \citep{rizal2016multiscale}. 
+Dans le cadre de l'étude des états de conscience sous agent anesthésique, les paramètres de Hjorth ont été largement utilisés pour caractériser et permettre la classification des signaux EEG en fonction des états d'anesthésie \citep{bankman1987feature, hosseini2017labeling, kumar2015electroencephalogram, rampil1998primer}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Études comparatives de différentes mesures du signal}
+\label{etudescomparatives}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Plusieurs études se sont intéressées à la comparaison entre les différentes mesures et caractéristiques extraites des signaux électrophysiologiques. 
+Celles-ci ont notamment été mises en œuvre dans un but de classification des états physiologiques associés à différentes conditions de conscience. 
+
+\cite{sitt2014large} ont effectué une analyse systématique de marqueurs du signal EEG en quantifiant leur efficacité à différencier des patients en état végétatif de ceux en état de conscience minimale ou éveillé. 
+Les auteurs ont identifié une série de mesures qu'ils ont organisé en quatre catégories : (i) les potentiels reliés aux événements ; (ii) la dynamique locale d'échange d'informations entre les électrodes ; (iii) les modèles spectraux basés sur la complexité de l'information ; et (iv) le potentiel global d'activité moyen par rapport aux fluctuations au cours de la session d'enregistrement. 
+Les auteurs se sont basés sur une analyse d'un large ensemble de 181 enregistrements d'EEG haute densité acquis dans un protocole de 30 minutes d'enregistrement. 
+Ils ont trouvé que la puissance associée aux basses fréquences, la complexité du signal EEG et le transfert d'information constituaient les signatures les plus fiables de l'état de conscience. 
+En outre, lorsqu'elles étaient combinées, ces mesures permettaient l'obtention d'un taux élevé de classifications réussies des différents états de conscience des patients. 
+Plus spécifiquement, cette étude a montré que : i) les topographies reliées aux évènements affichent une faibe sensibilité à discriminer les groupes de patients ; ii) la puissance dans les bandes de fréquences alpha et théta indexe de manière efficace les états de conscience ; iii) la complexité du signal EEG augmente avec l'état de conscience et iv) le partage d'information à travers les régions cérébrales indexe également l'état de conscience. 
+
+\cite{liang2015eeg} ont comparé la capacité de 12 indicateurs d'entropie et de complexité du signal pour surveiller la profondeur de l'anesthésie dans le cas d'une anesthésie induite par des agents pharmacologiques. 
+Parmi ces douze indices, l'entropie approximée, l'entropie échantillonnée, l'entropie de permutation, l'entropie par ondelettes, l'entropie de Shannon et d'autres, ont été étudiés. 
+Le résultat le plus notable est que tous les indices d'entropie ont permis de suivre les variations des signaux EEG au cours des différents états d'anesthésie. 
+Les auteurs ont établit que chaque indicateur a ses avantages et ses inconvénients dans l'estimation des dynamiques de la profondeur de l'état anesthésique. 
+
+\cite{curley2018characterization} ont cherché à caractériser les signaux EEG utilisés comme indicateurs des processus conscients chez des patients présentant des troubles de la conscience du fait de lésions cérébrales.
+La «dissociation cognitivo-motrice» est le terme utilisé pour décrire certains de ces patients dont la cognition est préservée par des méthodes de neuroimagerie, mais qui n'apparaît pas dans les évaluations comportementales. 
+La dissociation cognitivo-motrice après une lésion cérébrale grave est principalement marquée par des lésions concomitantes dans tout le cerveau en plus d'une fonction motrice limitée ou nulle. 
+Les auteurs ont ainsi cherché à examiner la fiabilité de différents indicateurs du signal EEG en vue d'une utilisation potentielle pour la conception de technologies d'interfaces homme-machine de rétablissement de la communication. 
+Ils ont comparé les évaluations basées sur les signaux EEG à des résultats issus de méthodes d'IRMf et ont utilisé des analyses de densité spectrale de puissance de l'EEG pour détecter des preuves de l'exécution d'une tâche par les sujets. 
+Une variabilité substantielle des caractéristiques temporelles et spatiales des signaux EEG était observée de manière significative chez les patients, alors que la variation dans ces domaines n'était que modeste chez les sujets sains. 
+La majorité des sujet sains présentaient en outre une suppression de la puissance alpha et bêta pendant l'exécution de la tâche.
+Ils ont également examiné les contributions potentielles des fluctuations de l'éveil qui semblaient covarier avec la capacité de certains patients à générer des signaux EEG de manière fiable en réponse à une tâche donnée. 
+Cinq des neuf patients présentant des réponses statistiquement indéterminées à l'une des tâches testées ont montré une réponse positive après avoir pris en compte les variations de l'état de fond global (visualisées dans la forme qualitative du spectre de puissance) et le regroupement des séries d'essais présentant des caractéristiques d'état de fond similaires. 
+Ces résultats révèlent les variations du signal des réponses EEG chez ce type de patients souffrant de lésions cérébrales graves et donnent un aperçu de la physiologie sous-jacente de la dissociation cognitive-motrice.
+Les auteurs ont ainsi pu mettre en évidence des indices neurophysiologiques de la capacité à suivre des commandes chez des patients atteints de lésions cérébrales graves ainsi que chez des personnes en bonne santé. 
+
+\cite{engemann2018robust} ont montré que plusieurs marqueurs électrophysiologiques de la conscience, tels que l'entropie spectrale ou de permutation, peuvent être exploités de manière robuste à travers différents contextes et protocoles pour discriminer les états de conscience. 
+Les auteurs ont analysé plus de 300 enregistrements de patients présentant des troubles de la conscience (syndrome d'éveil sans réponse et état de conscience minimale) comparativement à plus de 60 individus sains. 
+Ils ont observé que les classifieurs basés sur des caractéristiques EEG, multivariés ou univariés, se généralisent aux enregistrements obtenus à partir de différentes cohortes de patients, de protocoles EEG et de différents centres d'étude. 
+Leur méthode fondée sur l'extraction de caractéristiques des signaux EEG et basée sur une aggrégation des statistiques sommaires des caractéristiques était particulièrement utile dans cette discrimination des états de conscience. 
+Les résultats démontrent ainsi que les marqueurs EEG de la conscience peuvent être identifiés de manière fiable, économique et automatique grâce à de l'apprentissage automatique dans divers contextes cliniques et d'acquisition.
+Les auteurs proposent que les futurs travaux dans ce domaine devront chercher à démontrer dans quelle mesure ce type d'outils peut permettre de trouver des marqueurs neurophysiologiques robustes des états de conscience. \\
+
+Dans cette section, nous avons présenté la théorie de l'information et les mesures qu'elle propose pour quantifier la dynamique cérébrale associée aux états de conscience. 
+Les différentes mesures de complexité présentées peuvent être divisées en trois catégories : les mesures d'entropies, les mesures de corrélations à long-terme et les mesures de dimension fractale. 
+Ces différentes mesures permettent de caractériser les propriétés du signal EEG associées aux états de conscience. 
+L'utilisation de ces techniques pour l'étude de la perception auditive consceinte sera donc avant tout pragmatique dans le sens où elles ne sont pas directement liées à une théorie spécifique de la conscience. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Théorie de l'information intégrée}
+\label{theorieinformationintegreepractical}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans ce qui suit, nous présentons la théorie de l'information intégrée et les mesures qu'elle propose pour étudier la conscience au travers des états et contenus de conscience.
+Cette théorie consiste en un modèle de la conscience visant à établir un lien fort entre les propriétés de l'activité cérébrale et les propriétés de l'expérience phénomènale consciente. 
+De cette manière, elle s'intègre dans la seconde approche d'évaluation qui consiste à se baser sur un modèle théorique de la conscience et sur les mesures qu'il propose afin de caractériser la perception consciente. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Théorie et aspects fondamentaux}
+\label{theorieaspectsfondamentaux}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Formalisme}
+\label{theorieinfointegreeformalisme}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La théorie de l'information intégrée (TII) part du principe que le système thalamo-cortical est le substrat neuroanatomique pour les processus neuronaux générant une expérience consciente en raison de la manière dont il traite l'information. 
+Plus précisément, la théorie prétend que le système thalamo-cortical intègre l'information en tant que système au-delà de ses parties, et que la quantité d'information intégrée dans le système thalamo-cortical d'un cerveau (ou une partie significative de celui-ci) devrait suivre le niveau de conscience de ce cerveau. 
+L'objectif de la TII est donc d'identifier un tel système intégré et de mesurer son répertoire d'états. 
+Un système tel qu'une photodiode (exemple pris systématiquement par G. Tononi) est très peu conscient car sa capacité à intégrer des informations est très faible avec un nombre d'états restreint. 
+Un système tel que le cerveau humain est conscient dans une plus large mesure car il peut intégrer de très grandes quantités d'informations et adopter un nombre beaucoup plus important d'états. 
+
+Selon la TII, la conscience est graduée --- et la quantité de conscience est saisie par la quantité $\Phi$ --- qui est une mesure de la «quantité minimale d'information effective qui peut être échangée à travers une partition d'un sous-ensemble» \citep{tononi2003measuring}. 
+Un tel sous-ensemble de nœuds (qui peut être constitué de neurones ou de groupes de neurones) capable d'intégrer des informations et qui ne fait partie d'aucun autre sous-ensemble ayant un $\Phi$ plus élevé constitue un «complexe». 
+Les complexes constituent la limite à l'intérieur de laquelle l'information peut être intégrée. 
+Un tel complexe serait un «sujet» de l'expérience, étant le lieu où l'information peut être intégrée \citep{tononi2004information}. 
+Comme l'information ne peut être intégrée qu'à l'intérieur d'un complexe et jamais en dehors de ses limites, «la conscience en tant qu'intégration d'information est nécessairement subjective, privée et liée à un seul point de vue ou perspective, intrinsèque» \citep{tononi2004information}. 
+
+De cette façon, la TII vise à quantifier de manière formelle la quantité d'information intégrée qu'un système est susceptible de générer (Figure \ref{fig:figure2structureinformationintegree}). 
+L'expérience consciente serait alors basée sur des processus de ré-entrée récursifs pour aboutir à une intégration globale et consiste en ce sens, en une continuité théorique de l'hypothèse du noyau dynamique. 
+Sur cette base, la TII permet de déterminer, en principe pour tout système, s'il a une conscience, quelle mesure et quelle expérience particulière il en a. 
+Un système est considéré comme susceptible d'intégrer de l'information dans la mesure où il dispose d'un large répertoire d'états et que les états de chacun des éléments sont causalement dépendants des états des autres éléments. 
+L'information intégrée représente ainsi la quantité qui mesure l'information générée par le système dans son ensemble au-delà de l'information générée indépendamment par ses parties \citep{balduzzi2008integrated, tononi2008consciousness}. 
+L'une de ses prédictions fondamentales est que plus un système apparaît être conscient, plus il intègre de l'information et plus il génère de l'information intégrée. 
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=0.9\linewidth]{Figures/images_articles/Haun_et_al_2017_1.jpeg}
+\caption[Expérience consciente et structure d'information intégrée]{Expérience consciente et structure d'information intégrée. (Gauche) L'expérience consciente est un modèle intégré à plusieurs niveaux, où, par exemple, des couleurs distinctes constituent des formes, qui constituent des objets distincts, qui constituent des scènes distinctes, qui font partie d'un percept conscient multimodal. (Droite) Un système d'éléments en interaction (ABCD, coin inférieur droit) génère un schéma d'informations intégrées à plusieurs niveaux. Dans cet exemple, un système intégré ABCD est soutenu par AC et BCD, ce dernier étant encore soutenu par BD et CD. La TII propose qu'un tel schéma d'informations intégrées soit isomorphe, de sorte qu'il présente une forme égale à la structure d'une expérience consciente. Adapté de \cite{haun2017conscious}.}
+\label{fig:figure2structureinformationintegree}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Informations intrinsèque et extrinsèque}
+\label{theorieinfointegreeinformation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans la TII, il existe une distinction entre deux types d'information : une information intrinsèque opposée à une information extrinsèque, selon la perspective avec laquelle les informations sont considérées \citep{oizumi2014phenomenology}. 
+L'information intrinsèque est quantifiée du point de vue du système lui-même tandis que l'information extrinsèque est quantifiée du point de vue d'un observateur externe. 
+Classiquement, en neurosciences, la relation informationnelle entre les états neuronaux $X$ et les stimuli externes $S$ (ou comportements/sorties observables) a été quantifiée par l'information mutuelle $IM$ entre $X$ et $S$ \citep{rieke1999spikes, dayan2001theoretical, averbeck2006neural, quiroga2009extracting} tel que : 
+
+\begin{equation}
+IM(X; S) = H(S) - H(S|X).
+\end{equation}
+où l'entropie $H(S)$ et l'entropie conditionnelle $H(S|X)$ sont données par :
+
+\begin{align}
+H(S) &= - \sum_s p(s) \log p(s) \\
+H(S|X) &= - \sum_{s,x} p(s,x) \log p(s|x)
+\end{align}
+$x$ et $s$ représentent un état neuronal particulier et un stimulus externe particulier. 
+Respectivement, $p(x)$, $p(s)$, $p(s,x)$ et $p(s|x)$ dénotent les probabilités marginales de $x$ et $s$, la probabilité conjointe de $x$ et $s$, et la probabilité conditionnelle de $s$ sachant $x$. 
+
+La somme est calculée pour tous les états neuronaux possibles $x$ ou sur tous les stimuli $s$. 
+Les majuscules $S$ et $X$ représentent respectivement un ensemble entier de $s$ ou $x$ (\textit{i.e.}, les alphabets d'états). 
+L'information mutuelle est exprimée comme la différence entre l'entropie des stimuli, $H(S)$, et l'entropie conditionnelle des stimuli étant donné les états neuronaux, $H(S|X)$. 
+Ainsi, $IM(X;S)$ quantifie la réduction de l'incertitude sur les stimuli en acquérant la connaissance des états neuronaux du point de vue d'un observateur externe. 
+Ce type d'information est appelé information extrinsèque car l'information est quantifiée du point de vue de l’observateur externe. 
+
+L'information intrinsèque, en revanche, ne devrait dépendre que des variables internes du système et est quantifiée du point de vue du système lui-même, indépendamment des variables externes, ne nécessitant aucun observateur externe. 
+Si l'information concerne la conscience, elle devrait être une information intrinsèque, car la conscience est indépendante des observateurs externes \citep{oizumi2016measuring}. 
+Avec ce concept d'information intrinsèque, la TII vise à quantifier la «différence» que les mécanismes internes d'un système font pour le système lui-même. 
+C'est-à-dire le degré d'influence qu'un système exerce sur lui-même à travers ses mécanismes de causalité internes \citep{tononi2008consciousness}. 
+La manière dont les états passés affectent les états actuels peut être déterminée par la matrice de probabilités de transition du système, $M_{i,j}(t,\tau) = P[X_j(t)|X_i(t-\tau)]$. 
+Cette matrice de probabilités de transition spécifie les probabilités de passage d'un état $X_i$ du système vers un autre état $X_j$. 
+Ici, $X_i(t)$ et $X_i(t-\tau)$ sont les états présent et passé du système aux temps $t$ et $t-\tau$, respectivement. 
+
+Dans la TII, la distribution des états passés est supposée être la distribution d'entropie maximale, c'est-à-dire que les états passés sont au maximum incertains. 
+Selon \cite{oizumi2016measuring}, l'information intrinsèque $IM(X_{t-\tau};X_t)$ quantifie l'ampleur à laquelle l’incertitude des états passés peut être réduite en connaissant les états actuels du point de vue intrinsèque du système. 
+Une telle quantité serait considérée comme la quantité d'information intrinsèquement générée par le système :
+
+\begin{equation}
+IM(X_{t-\tau};X_t) = H(X_{t-\tau}) - H(X_{t-\tau}|X_t)
+\end{equation}
+où $H(X_{t-\tau})$ est l'entropie de la distribution normale multivariée des états passés et $H(X_{t-\tau}|X_t)$, l'entropie conditionnelle de la distribution normale multivariée des états passés sachant les états présents. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Contraintes théoriques pour une mesure d'information intégrée}
+\label{requisitionstheoriques}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Une mesure d'information intégrée $\Phi$, comme information «supplémentaire» générée par un système dans son ensemble au-dessus et au-delà de ses parties, devrait satisfaire à des exigences théoriques \citep{oizumi2016measuring}. 
+Premièrement, l'information intégrée ne devrait pas être négative car l'information générée indépendamment par les parties ne doit jamais dépasser l'information générée par l'ensemble. 
+Dans un premier cas, l'information intégrée devrait être nulle lorsque la quantité d'information générée par l'ensemble du système est nulle (aucune information). 
+Dans un second cas, l'information intégrée devrait être nulle lorsque la quantité d'information générée par l'ensemble est égale à celle générée par ses parties (aucune d'intégration). 
+Deuxièmement, l'information intégrée ne devrait pas dépasser la quantité d'information générée par l'ensemble du système car l'information générée par les parties ne devrait pas être négative. 
+Ainsi, l'information intégrée devrait être comprise entre 0 et l'information générée par l'ensemble du système, ce qui s'écrit :
+
+\begin{equation}
+0 \leq \Phi \leq IM_{max}(X_t;X_{t-\tau})
+\end{equation} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Partition d'information minimale}
+\label{partitioninfominimaletheorique}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La mesure originale de l'information intégrée de G. Tononi \citep{tononi2004information} a été impossible à appliquer à des données cérébrales réelles, car elle nécessite, en théorie, une perturbation systématique de chaque nœud du réseau. 
+Le cadre plus récent de la TII \citep{oizumi2014phenomenology} est également irréalisable en pratique pour les données d'activité cérébrales réelles, car il exige de connaître la matrice de probabilité de transition entre les états d'un réseau neuronal entier, ce qui est impossible à déterminer dans les systèmes neuronaux réels. 
+Ces limites ont inspiré plusieurs mesures alternatives de l'information intégrée, qui peuvent en principe être calculées à partir de données de séries temporelles \citep{seth2006theories, seth2005causal, barrett2011practical, oizumi2016measuring}, néanmoins ces mesures sont limitées. 
+Bien qu'elles ne nécessitent pas la perturbation systématique d'un système ou la connaissance de l'architecture fonctionnelle complète d'un réseau --- et constituent donc une amélioration par rapport aux mesures précédentes en termes d'applicabilité dans le monde réel --- elles sont toujours excessivement lentes à calculer pour des cerveaux réels. 
+En effet, comme pour les mesures de G. Tononi, chacune de ces mesures alternatives nécessite de trouver la «partition d'information minimale» (PIM) d'un système.
+
+Dans la TII, la clé de toute mesure d’information intégrée correspond au partitionnement du système. 
+En effet, pour comprendre comment le système intègre de l'information et ainsi, génère de l'information intégrée, il est nécessaire de réduire la connectivité entre ses composantes.  
+Ce faisant, cela permet de quantifier l’effet du partitionnement sur le système dans son ensemble au moyen de la mesure de la quantité d'information associée au partitionnement. 
+L’information intégrée se réfère donc à l'information minimale irréductible au sein du système pouvant être obtenue lors du partitionnement de celui-ci. 
+L'idée de base est que si on supprime les interactions entre les éléments du système avec une partition, on peut en identifier le «noyau dur» censé représenter la structure d'information irréductible propre au système. 
+De cette manière, la mesure canonique $\Phi$, est définie comme une quantité d’information causalement efficace qui peut être intégrée à travers le maillon le plus faible du système (\textit{i.e.}, réduction minimale). 
+Ainsi, elle mesure les interactions causales dirigées au sein du système en étant une mesure d'information résiduelle associée au partitionnement. 
+Les différentes mesures d’information intégrée sont définies par une mesure d’information efficace, qui opérationnalise le concept «d’information au-delà d’une partition» $\pi$. 
+La mesure d'information intégrée est l’information efficace par rapport à la partition qui identifie l’élément le plus faible du système, c’est-à-dire la partition pour laquelle les éléments sont le moins intégrés. 
+Cela implique de diviser le système en fonction de $\pi$ et de calculer le transfert d’information entre les parties. 
+Formellement, l’information intégrée représente ainsi l’information efficace au-delà de la PIM.
+
+La PIM est donc simplement la partition du réseau à travers laquelle il y a le moins de flux d'information (Figure \ref{fig:figure2partition}). 
+Le flux d'information à travers la PIM devrait refléter la quantité d'information qu'un système intègre ou a la capacité d'intégrer, car il indique la quantité d'information qu'un système génère en plus de la quantité d'information générée par ses sous-systèmes, qui sont délimités par la décomposition la plus informative (\textit{i.e.}, la PIM) du système. 
+L'utilisation de la PIM comme partition à travers laquelle évaluer l'information intégrée pose deux problèmes majeurs : i) le temps de calcul nécessaire pour trouver la PIM croît de façon «supra-exponentielle» avec la taille du système \citep{tegmark2016improved}, de sorte qu'il est impossible de trouver la PIM excepté pour de très petits réseaux artificiels, et ii) il est concevable que la partition à travers laquelle il y a le moins de flux d'information soit un seul nœud isolé du reste du système, ce qui ne reflète probablement pas la façon dont l'information est réellement intégrée dans le cerveau \citep{toker2016moving}. 
+Une alternative à la recherche de la PIM est de trouver la bipartition d'information minimale (BIM) d'un système (Figure \ref{fig:figure2partition} B), qui est la bipartition à travers laquelle il y a le moins de flux d'information dans un réseau. 
+Si la BIM divise un système en deux moitiés de taille égale, alors, contrairement à la PIM, elle ne court pas le risque d'isoler un ou quelques nœuds du reste du système. 
+La BIM est également plus rapide à calculer que la PIM, bien que le temps nécessaire pour trouver la BIM augmente également de manière exponentielle avec des systèmes plus grands. 
+Bien que \cite{tegmark2016improved} ait récemment proposé une approche de la théorie des graphes permettant d'approcher rapidement la BIM en se basant sur la structure du réseau, le calcul de l'information intégrée à travers la BIM pose toujours des problèmes conceptuels : il n'est pas clair a priori que la BIM soit un moyen significatif de décomposer un réseau neuronal car il est peu probable que les sous-réseaux fonctionnels divisent le cerveau exactement en deux \citep{toker2016moving}.
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=\linewidth]{illustrations/utilisé/partition.jpg}
+\caption[Options de partitionnement d'un réseau]{Options de partitionnement d'un réseau. Les ellipses grises délimitent la partition à travers laquelle les informations intégrées sont évaluées. A) Exemple d'un petit réseau. Afin de calculer l'information intégrée dans ce réseau, la plupart des mesures nécessitent de diviser le réseau en une certaine partition et de voir combien d'information supplémentaire le réseau entier transporte par rapport à la somme de ses parties. B) La «bipartition d'information minimale» (BIM) du réseau. La BIM est la partition  qui sépare le système en deux parties et à travers laquelle il y a le moins de flux d'information. C) La «partition de modularité maximale» (PMM). La PMM divise un réseau en modules. La définition d'un module est que ses nœuds sont plus densément connectés les uns aux autres qu'ils ne le sont aux nœuds extérieurs au module. D) La «partition atomique». La partition atomique traite chaque nœud comme sa propre partie. Adapté de \cite{toker2016moving}.}
+\label{fig:figure2partition}
+\end{figure*}
+
+Une autre alternative rapide pour le partitionnement des réseaux est la partition «atomique» (Figure \ref{fig:figure2partition} C), qui a été proposée précédemment \citep{oizumi2016measuring}. 
+La partition atomique traite chaque nœud d'un réseau comme sa propre partie ; en d'autres termes, il s'agit de la partition complète d'un réseau, de sorte qu'aucun nœud n'est regroupé avec un autre nœud dans une communauté ou un module. Bien que l'utilisation de la partition atomique soit une alternative rapide à l'utilisation de la PIM ou de la BIM, le traitement local de l'information dans le cerveau est susceptible d'être instancié dans des communautés de nœuds plutôt que dans des nœuds uniques, en fonction de ce qui est considéré comme un nœud dans le réseau, limitant ainsi l'utilisation de tels types de partition. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Mesures et études expérimentales de la TII}
+\label{integrationinformationmesures}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Mesures d'information intégrée}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+La théorie de l'information intégrée de la conscience a donné naissance à un riche ensemble de formulations mathématiques basées sur l'analyse de séries temporelles issues de systèmes dynamiques discrets ou continus. 
+Malgré l'attention que la TII a suscitée dans une grande variété de disciplines, peu de choses ont été faites pour tester la validité de la théorie dans des données cérébrales réelles.
+Ainsi, parmi les mesures développées au fur et à mesure de l'évolution de la TII, certaines ont montré une possibilité d'application pour des données cérébrales réelles tandis que d'autres non. 
+Dans l'ensemble des mesures ayant trouvé une potentielle application pour ce type de données, nous présentons ici celles qui nous sont apparues les plus pertinentes. 
+Nous présenterons plus en détail l'algorithme de calcul utilisé pour chacune des mesures sélectionnées pour notre étude dans la Section \ref{integrationinformationmasquageinformationnel}. 
+
+À la base de ces mesures, nous retrouvons la complexité neurale introduite par \cite{tononi1994measure}, mesure statistique qui capture les régularités basées sur une déviation de l'indépendance statistique entre les composantes du système. 
+Elle consiste en la somme des informations mutuelles moyennes pour toutes les bipartitions du système et capture ainsi l'interaction entre ségrégation fonctionnelle et intégration globale à l'œuvre dans le système. 
+Un peu plus tard, \cite{amari2001information} a développé une mesure de «multi-information mutuelle», ou plus tardivement appelée «co-information» par \cite{bell2003co} : $\Phi^{MI}$. 
+Cette co-information $\Phi^{MI}$ mesure la quantité d'information qui est partagée par plusieurs des éléments du système, que l'on peut aussi comprendre comme une quantité d'information intégrée par redondance au sein du système. 
+Ensuite, \cite{barrett2011practical} ont proposé une mesure d'information intégrée $\Phi^H$ qui se définit comme l'information effective en termes d'augmentation dans l'incertitude au sein du système. 
+Elle est également appelée «interaction stochastique intégrée» et représente l'information générée à partir des transitions issues de la distribution des états passés plutôt que celles issues d'un état passé d'entropie maximale hypothétique. 
+Elle est applicable à la fois aux systèmes discrets et continus et quantifie ainsi l'augmentation de l'incertitude dans le passé de tels systèmes lorsqu'ils sont divisés. 
+Plus récemment, Masafumi Oizumi et ses collaborateurs ont développé deux mesures d'information intégrée que sont $\Phi^*$ \citep{oizumi2016measuring} et $\Phi^G$ \citep{oizumi2016unified}. 
+La première, $\Phi^*$ est appelée «information intégrée basée sur le décodage» et représente la différence entre l'information mutuelle «actuelle» et celle «hypothétique» entre les états passés et présents du système. 
+Elle est calculée en utilisant le concept de décodage incompatible et mesure ainsi la quantité d'information pouvant être extraite d'un système si le récepteur utilise une distribution de décodage sous-optimale (ou non compatible). 
+La deuxième, $\Phi^G$ est appelée «information intégrée géométrique» et représente la distance géométrique de l'information entre un système et ce même système avec ses parties déconnectées. 
+
+Après avoir brièvement présenté plusieurs mesures potentielles d'information intégrée, nous abordons ensuite quelques études ayant cherchées à mettre à l'épreuve ces différentes mesures. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Études expérimentales de la TII}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dans leur étude, \cite{oizumi2016measuring} ont calculé plusieurs mesures d'information intégrée à partir de données neuronales acquises par électrocorticographie (ECoG) chez le singe. 
+Ils ont déterminé une mesure d'information intégrée, $\Phi^*$, basée sur une approche par décodage compatible/incompatible de l'information et pouvant satisfaire aux exigences théoriques. 
+Selon les auteurs, les problèmes de $\Phi_H$ et de $\Phi_{MI}$ peuvent se manifester dans leur application à des enregistrements neuronaux réels du cerveau. 
+La mesure d'information intégrée $\Phi$ est usuellement calculée sur un laps de temps $\tau$. 
+Si $\tau$ est défini sur $500$ ms, alors $\Phi$ indiquera, en bits, la quantité d'information transportée sur $500$ ms en utilisant les connexions du réseau qui traversent la partition du système étudié \citep{toker2019information}. 
+La Figure \ref{fig:figure2informationintegreedecalagetemporel} (Gauche) montre les mesures d'information intégrée, $\Phi^*$, $\Phi_{MI}$, $\Phi_H$, et l'information mutuelle (notée $I$ dans l'étude), calculées à partir des enregistrements de l'électrocorticogramme d'un singe éveillé en fonction du décalage temporel $\tau$ issues à partir de \cite{oizumi2016measuring}. 
+L'information mutuelle entre $X_t$ et $X_{t-\tau}$ diminue de façon monotone lorsque $\tau$ augmente. 
+$\Phi^*$ est positif, culmine autour de $\tau=20$ ms, et est inférieur à l'information mutuelle, répondant ainsi positivement aux exigences théoriques. 
+Cependant, $\Phi_{MI}$ est négatif quand $\tau$ est petit et $\Phi_H$ reste grand même lorsque $I$ s'approche de $0$ avec l'augmentation de $\tau$, ces deux aspects violant ainsi les exigences théoriques. 
+Ces résultats ont donc amené les auteurs à présenter $\Phi^*$ comme une mesure d'information intégrée adéquate et pertinente pour les analyses d'intégration de l'information à partir d'enregistrements de données électrophysiologiques. 
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=0.43\linewidth]{Figures/images_articles/Oizumi_et_al_2016_2.jpeg}
+\includegraphics[width=0.56\linewidth]{Figures/images_articles/Isler_et_al_2018.jpeg}
+\caption[Relation entre $\Phi$ et le décalage temporel $\tau$]{Relation entre $\Phi$ et le décalage temporel $\tau$. (Gauche) Mesures d'information intégrée et d'information mutuelle calculées sur des données ECoG obtenues chez le singe. Les comportements de $\Phi^*$ (ligne rouge), $\Phi_{MI}$ (ligne verte), $\Phi_H$ (ligne bleue) et de l'information mutuelle $I$ (ligne noire) sont représentés ici pour un décalage temporel $\tau$ allant de $1$ à $500$~ms. Adapté de \cite{oizumi2016measuring}. (Droite) Moyenne et erreur standard de $\Phi$ en fonction du décalage temporel $\tau$. Les valeurs moyennes de $\Phi$ étaient négatives pour un $\tau$ inférieur à $~400$ ms et positives au-dessus. Le $\Phi$ augmente linéairement avec le logarithme du $\tau$ jusqu'à ce qu'il devienne positif, après quoi il fluctue entre $0$ et $0.13$ avec deux larges maxima de 0,13 et 0,1 à des $\tau$ de $~720$ et $2800$ ms, respectivement. Adapté de \cite{isler2018integrated}.}
+\label{fig:figure2informationintegreedecalagetemporel}
+\end{figure*}
+
+Dans une aute étude, \cite{haun2017conscious} ont testé si la structure hiérarchique d'interactions causales, révélée par des patterns d'information intégrée, entre différentes populations neuronales, pouvait être corrélée avec la perception consciente. 
+Ils ont calculé ces patterns d'information intégrée à partir de l'électrocorticographie intra-crânienne de six patients. 
+Pendant l'enregistrement, les sujets ont vu des stimuli visuels par suppression de flashs continus et par masquage destinés à dissocier le percept conscient du stimulus, ainsi que des stimuli non-masqués. 
+Une correspondance entre les percepts conscients et les patterns d'information intégrée était révélée au sein des zones de traitements des stimuli visuels. 
+Ils ont quantifié cette correspondance à l'aide de méthodes de classification et ont révélé un appariement entre expériences visuelles conscientes et structure d'information intégrée. 
+Cet appariement n'était pas observable avec les mesures d'information classiques telles que l'information mutuelle ou l'entropie (Figure \ref{fig:figure2estimationinformationintegree}). 
+Ces résultats sont intéressants dans la mesure où ils donnent un soutien expérimental du rôle des patterns d'information intégrée localement pour comprendre le substrat neuronal de la perception consciente des objets. 
+
+\begin{figure*}[!t]
+\center
+\includegraphics[width=0.95\linewidth]{Figures/images_articles/Haun_et_al_2016.jpeg}
+\caption[Procédure d'estimation de patterns d'information intégrée issus de données ECoG]{Patterns d'information intégrée issus de données ECoG. (A) Enregistrement ECoG. (B) Moyennes (lignes épaisses) et écarts types (ombres) des potentiels pour les quatre canaux marqués en A, de 500ms avant à 1000ms après l'apparition d'un stimulus visuel. (C-E) Courbes temporelles de l'entropie H (C), de l'information mutuelle I (D) et de l'information intégrée $\Phi^*$ (E) pour chacun des sous-systèmes. Chaque sous-système est un sous-ensemble des canaux du système ABCD. Les valeurs ont été estimées sur une fenêtre de temps $T=200$ ms et $\tau=3$ ms. L'entropie et l'information mutuelle sont proportionnelles au nombre de canaux, H et I sont représentés divisés par le nombre de canaux pour chaque sous-système, afin de mettre en évidence la dynamique de tous les sous-systèmes. $\Phi^*$ augmente pour les sous-systèmes BD et ACD, après l'apparition du stimulus. L'augmentation de $\Phi^*$ de du sous-système ACD s'accompagne d'un changement de sa partition d'information minimale (PIM). (F et G) : le sous-système ACD passe d'une PIM bipartite à une PIM tripartite lorsqu'un visage est vu, ce qui s'accompagne d'une augmentation de l'amplitude de $\Phi^*$ (indiquée par les couleurs plus foncées). Adapté de \cite{haun2017conscious}.}
+\label{fig:figure2estimationinformationintegree}
+\end{figure*}
+
+Dans une autre étude, une mesure d'information intégrée calculée à partir de données EEG a été utilisée pour évaluer les niveaux de conscience d'enfants nés prématurément pendant leur hospitalisation dans une unité de soins intensifs néonatals \citep{isler2018integrated}. 
+Comme énoncé précédemment, la détermination du degré de conscience dans le cadre clinique présente des difficultés pour les personnes qui ne peuvent pas effectuer de tâches ou faire des rapports verbaux, comme les personnes dans le coma, sous anesthésie ou les nourrissons. 
+\cite{isler2018integrated} ont calculé $\Phi$ à partir de signaux EEG des nourissons dans le cadre de l'étude de l'intervention d'éducation familiale visant à évaluer une nouvelle intervention comportementale conçue pour faciliter la connexion émotionnelle entre la mère et le nourrisson ainsi que la corégulation physiologique. 
+Si, en tant que telle comme proposée dans la TII, l'information intégrée représente effectivement une mesure de conscience, les auteurs ont supposé que : i) la valeur de $\Phi$ augmenterait avec l'âge au cours de la période périnatale ; ii) compte tenu des résultats antérieurs, l'intervention d'éducation familiale accélérerait la maturation de $\Phi$ chez les nourrissons en ayant bénéficié par rapport à ceux qui n'en auraient pas bénéficié ; et iii) $\Phi$ serait plus élevé à l'état de veille qu'à l'état de sommeil et plus élevé dans le sommeil actif que dans le sommeil calme (analogues infantiles du sommeil paradoxal et non-paradoxal de l'adulte, respectivement). 
+Les auteurs ont trouvé que l'information intégrée présentait une structure non-aléatoire en fonction du décalage temporel $\tau$ sur lequel elle était calculée (Figure \ref{fig:figure2informationintegreedecalagetemporel} Droite). 
+Ils ont également constaté que $\Phi$ était supérieur dans le sommeil calme par rapport au sommeil actif dans la cohorte avec intervention dans une gamme de $\tau$ de $200$ à $600$ ms. 
+Enfin, ayant examiné la corrélation entre $\Phi$ et les différents états de conscience (éveil, sommeil actif, sommeil calme), ils ont trouvé des corrélations significatives, permettant de distinguer les états de conscience. 
+Cette étude apporte un autre appui empirique en faveur de la théorie de l'information intégrée de la conscience sur la base de données neurophysiologiques. 
+
+Une autre étude a présenté une méthode pratique pour estimer un $\Phi$ global à partir d'un EEG à haute densité (128 canaux) et déterminer la contribution locale de chaque canal à la mesure du $\Phi$ global \citep{kim2018estimating}. 
+Les auteurs ont examiné les corrélations entre la puissance, la fréquence, la connectivité fonctionnelle et la modularité\footnote{De nombreux réseaux d'intérêt pour les sciences, notamment les réseaux sociaux, les réseaux informatiques et les réseaux cérébraux, se divisent naturellement en communautés ou en modules. Le problème de la détection et de la caractérisation de cette structure communautaire ou modulaire est l'une des questions les plus importantes dans l'étude des systèmes en réseau. Une approche très efficace est l'optimisation d'une fonction connue sous le nom de «modularité» sur les divisions possibles d'un réseau. La modularité peut être exprimée en termes de vecteurs propres d'une matrice caractéristique du réseau. appelée «matrice de modularité» \citep{newman2006modularity}.} de l'EEG avec un $\Phi$ régional et local dans différents états de conscience modulés par différents agents anesthésiques. 
+Les résultats ont montré que l'estimation du $\Phi$ global est insuffisante pour distinguer les états d'anesthésie. 
+Cependant, un espace de paramètres multidimensionnel étendu par quatre paramètres liés à $\Phi$ et à la connectivité EEG a été capable de différencier tous les états de conscience. 
+Selon les auteurs, l'association de $\Phi$ avec la connectivité EEG pendant des états d'anesthésie cliniquement définis représente une nouvelle approche pratique de l'application de la TII. 
+Cette approche pourrait être utilisée pour caractériser divers états de conscience physiologiques (sommeil), pharmacologiques (anesthésie) et pathologiques (coma) dans le cerveau humain. 
+
+Aussi, une autre étude a cherché à montrer que la criticalité\footnote{La criticalité représente un état d'équilibre physique d'un réseau entre une grande variation dans la configuration fonctionnelle du réseau et une grande contrainte dans la configuration structurelle du réseau} d'un réseau pourrait être à la base de l'émergence d'un $\Phi$ élevé \citep{kim2019criticality}. 
+Les auteurs ont émis l'hypothèse qu'avec la diminution de la conscience, le cerveau perd la criticalité de son réseau sous-jacent et que $\Phi$ diminue. 
+Ces hypothèses ont été testées à l'aide d'un modèle de réseau cérébral à grande échelle et d'un EEG haute densité acquis pendant différents niveaux de conscience chez le sujet humain sous anesthésie générale. 
+Dans leur étude de modélisation, la criticalité maximale coïncidait avec le $\Phi$ maximal. 
+En outre, l'étude EEG a démontré une relation explicite entre $\Phi$, la criticalité et le niveau de conscience. 
+L'état de repos conscient a présenté les valeurs de $\Phi$ et de criticalité les plus élevés, tandis que l'équilibre entre variation et contrainte dans le réseau cérébral semblait se rompre lorsque l'état de conscience diminuait. 
+Les résultats de cette étude suggèrent que la criticalité du réseau serait une condition nécessaire pour l'obtention d'un $\Phi$ élevé dans le cerveau humain et fournissent un autre soutien empirique en faveur de la TII chez l'humain. 
+
+Criticalité d'un réseau et modularité présentent des fondements communs \citep{toker2019information}. 
+La mesure de l'information intégrée implique une recherche combinatoire du «maillon faible» informationnel d'un réseau, un processus dont le temps de calcul explose de façon exponentielle avec la taille du réseau. 
+\cite{toker2019information} ont montré qu'un algorithme de groupement spectral, issu des travaux sur les matrices de modularité et appliqué à la matrice de corrélation des données de séries temporelles, fournit une solution approximative mais robuste à la recherche du lien informationnel le plus faible des grands réseaux. 
+En évaluant cette solution dans des systèmes d'oscillateurs couplés semblables au cerveau ainsi que dans des données ECoG provenant de deux singes macaques, les auteurs ont réussi à montré une réduction drastique du temps de calcul de l'information intégrée dans les grands systèmes. 
+Ils ont également trouvé que l'intégration de l'information est maximisée dans des réseaux à haute efficacité globale, et que les structures de réseaux modulaires favorisent la ségrégation de l'information.
+Dans cette étude, \cite{toker2019information} ont choisi un décalage temporel qui, en moyenne, maximisait l'information intégrée pour le système en question. 
+Leur choix était basé sur les études de \cite{oizumi2014phenomenology} et \cite{hoel2016can}, lesquels soutiennent sur la base d'arguments phénoménologiques, que l'échelle temporelle de l'intégration des informations neuronales qui est la plus pertinente pour les processus cognitifs et perceptuels est celle qui maximise la quantité d'information intégrée. 
+Les auteurs indiquent qu'en général, il est courant d'estimer des mesures d'information différées telles que l'entropie de transfert pour divers décalages temporels, puis de choisir le décalage temporel qui maximise la mesure d'information d'intérêt. 
+Cette procédure semblerait capturer avec précision les échelles temporelles des interactions retardées du système considéré \citep{wibral2013measuring}. \\
+
+Ainsi, la théorie de l'information intégrée a donné naissance à de nombreuses mesures plus ou moins susceptibles de caractériser la conscience humaine. 
+Il apparaît principalement que très peu de mesures d'information intégrée sont actuellement applicables aux données réelles issues d'enregistrements neurophysiologiques tels que les signaux M/EEG ou d'IRMf. 
+La littérature a vu émerger d'une part des articles s'intéressant à appliquer les mesures disponibles sur des systèmes simples issus de modélisations informatiques afin de caractériser le comportement de ces mesures dans de tels systèmes. 
+D'autre part, certains articles ont cherché à manipuler les concepts intrinsèques de la TII (voir à en ajouter de nouveaux issus d'autres théories) pour créer de nouvelles mesures. 
+Il semble aujourd'hui brûlant d'actualité de mettre à l'épreuve la TII --- comme toute autre théorie de la conscience --- et les mesures d’information intégrée qu'elle propose dans l'étude expérimentale des processus associés au traitement conscient et aux états de conscience.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\label{conclusionchapitre2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Finalement, plusieurs caractéristiques des signaux EEG ont été étudiées en neuroimagerie et certains algorithmes de mesures d'entropie et de complexité ont permis de les obtenir dans le cadre de la caractérisation des états de conscience issue de l'analyse des signaux EEG. 
+En outre, ces différentes signatures neurophysiologiques permettent de mieux comprendre, en la caractérisant, la dynamique neuronale associée aux différents états de conscience. 
+En fournissant de l'information sur la neurodynamique cérébrale, les signaux EEG permettent grâce à ces signatures neurophysiologiques de mieux comprendre les différentes représentations cérébrales des états et des contenus de conscience des sujets et permettent de mieux caractériser les différents processus et mécanismes à l'oeuvre lors de la perception consciente. 
+
+Les outils issus de la TI permettent de : i) quantifier l'information associée à des signaux neuronaux issus de l’activité cérébrale et ii) quantifier la transmission d'information entre zones cérébrales distinctes, tandis que ceux issus de la TII permettent de : iii) quantifier l'intégration de l'information à des échelles cérébrales locales ou globales. 
+La TII propose une mesure quantitative, $\Phi$, de la quantité d'information intégrée dans un système physique. 
+Elle postule que $\Phi$ présente une relation d'identité avec la conscience et décrit ainsi la conscience comme une information intégrée entre des éléments constitutifs hautement différenciés mais irréductibles d'un système. 
+Enfin, elle prédit que la valeur de $\Phi$ estimée à partir des activités cérébrales représente le niveau de conscience à travers la phylogénie et les états fonctionnels associés au système cérébral. 
+Dans un système dynamique complexe tel que le cerveau, les conditions optimales pour de grands systèmes d'information intégrés n'ont cependant pas été élucidées. 
+Ainsi, des limitations pratiques, telles que les exigences de calcul requises pour estimer $\Phi$ pour des systèmes réels, ont entravé son application au cerveau et soulevé des questions sur l'utilité de la TII en général. 
+
+Au cours de ces dernières années, plusieurs mesures ont été proposées, mais leur comportement, à l'exception des cas les plus simples, n'a pas été caractérisé ou comparé de manière approfondie. 
+Afin d'obtenir une pertinence pratique pour l'étude du cerveau humain, il semble important d'établir une estimation fiable de $\Phi$ à partir de données EEG multi-électrodes chez le sujet humain. 
+Il semblerait aussi important de définir la relation entre $\Phi$ et les propriétés EEG conventionnellement utilisées pour définir les états de conscience. 
+En outre, malgré le nombre en hausse d'études sur la TII ces dernières années, il apparaît tout de même un manque d'études visant spécifiquement à tester et mettre à l'épreuve cette théorie sur des données neurales chez l'humain. 
+En ce sens, ce travail de thèse permettra dans une certaine mesure, d'apporter des éléments supplémentaires de mise à l'épreuve ainsi que de réflexion et d'interprétation à la mise en œuvre pratique des mesures d'information intégrée. 
+
+Nous avons détaillé plusieurs méthodes capables de caractériser la dynamique cérébrale lors de la construction d'un percept auditif conscient. 
+Parmi ces méthodes, les premières ont principalement été utilisées pour caractériser les différents états de conscience et nous les utiliserons de façon pragmatique pour caractériser la dynamique de l'activité cérébrale lors de la perception auditive consciente de tonalités cibles intégrées dans un masqueur multi-tonalités. 
+Les secondes sont basées sur la TII de la conscience et semblent être mieux fondées théoriquement pour aborder le problème des contenus de conscience ou tout du moins la prise de conscience d'une cible auditive dans un environnement bruité. \\
+
+De cette manière, à partir de ces deux méthodes visant à donner une caractérisation de l'activité cérébrale des états conscients et de leurs contenus, nous proposons deux contributions expérimentales : 
+\begin{itemize}
+\item[$\bullet$] L'étude pragmatique de l'effet des paramètres du masquage informationnel sur la construction du percept auditif afin de montrer l'effet bottom-up des processus ascendants des caractéristiques du stimulus et ainsi permettre un développement expérimental d'une seconde étude. 
+\item[$\bullet$] L'étude pragmatique de la dynamique cérébrale associée à la construction d'un percept auditif conscient dans un protocole de masquage informationnel au moyen de l'EEG. 
+\end{itemize} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage\null\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
